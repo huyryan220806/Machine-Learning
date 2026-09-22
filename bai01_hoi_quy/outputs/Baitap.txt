@@ -1,0 +1,47 @@
+--- Cell 1 ---
+
+--- Cell 2 ---
+10
+8.962
+
+--- Cell 3 ---
+[Biểu đồ hiển thị trong notebook]
+Nhận xét: Nhà có nhiều phòng hơn thường có giá cao hơn, nhưng giá vẫn dao động giữa các căn có cùng số phòng.
+
+--- Cell 4 ---
+w = -0.037858
+b = 6.983593
+[Biểu đồ hiển thị trong notebook]
+Nhận xét: w âm, nghĩa là theo đường hồi quy, khi tuổi nhà tăng 1 năm thì giá dự đoán giảm khoảng 0,037858 tỷ đồng.
+Một cách giải thích hợp lý là nhà cũ thường xuống cấp nên giá có xu hướng thấp hơn; tuy nhiên, dữ liệu này chưa chứng minh tuổi nhà là nguyên nhân làm giá giảm.
+Các điểm phân tán rộng, không bám sát một đường thẳng: quan hệ tuyến tính giữa tuổi nhà và giá khá yếu, nên chỉ dùng tuổi nhà để dự đoán giá sẽ kém chính xác.
+Hệ số có dấu đúng chưa đủ để kết luận hai đại lượng có quan hệ chặt; w chỉ mô tả xu hướng trung bình trong mẫu và giá còn phụ thuộc vào những yếu tố khác như diện tích, số phòng.
+
+--- Cell 5 ---
+Tập học: 48 căn; tập kiểm tra: 12 căn.
+R2 của mô hình diện tích và số phòng: 0.9698
+So với R2 = 0.9622, R2 tăng 0.0076.
+Nhận xét: Thêm số phòng có ích trên lần chia này vì R2 tăng nhẹ, nhưng mức cải thiện không lớn.
+Vì tập kiểm tra chỉ có 12 căn, cần đánh giá thêm trên các lần chia khác trước khi kết luận lợi ích này ổn định.
+
+--- Cell 6 ---
+Tốc độ học = 0.001; vòng 200; MSE = 20.2175
+Tốc độ học = 1.02; vòng 200; MSE = 290391782.0192
+Tốc độ học = 0.1; vòng 200; MSE = 0.1790
+Tốc độ học = 0.5; vòng 200; MSE = 0.1790
+Tốc độ học = 0.9; vòng 200; MSE = 0.1790
+Tốc độ học = 0.99; vòng 200; MSE = 0.1928
+Tốc độ học = 1; vòng 200; MSE = 44.8113
+Tốc độ học = 1.01; vòng 200; MSE = 122947.0009
+Giải thích: Tốc độ học 0.001 tạo bước cập nhật quá nhỏ nên sau 200 vòng vẫn chưa tới cực tiểu, MSE còn cao.
+Tốc độ học 1.02 tạo bước quá lớn, nhảy qua cực tiểu rồi ra xa hơn, khiến MSE tăng mạnh và thuật toán phân kỳ.
+Với tốc độ học 0.1, 0.5 và 0.9, MSE sau 200 vòng đều xấp xỉ 0.1790.
+Trong bài này, x được chuẩn hóa bằng độ lệch chuẩn NumPy (ddof=0), nên ranh giới tốc độ học là 1.
+Khoảng 0 < tốc độ học < 1 cho hội tụ; tại 1 thì dao động không giảm; lớn hơn 1 thì phân kỳ.
+Gần 1 từ phía dưới, thuật toán vẫn hội tụ nhưng có thể cần hơn 200 vòng: tốc độ 0.99 còn MSE = 0.1928.
+
+--- Cell 7 ---
+Diện tích 60 m²: giá dự đoán = 5.104 tỷ đồng.
+Diện tích 80 m²: giá dự đoán = 6.671 tỷ đồng.
+Cảnh báo: Diện tích 200 m² nằm ngoài khoảng dữ liệu 35.5–117.5 m²; dự đoán này là ngoại suy nên cần thận trọng.
+Diện tích 200 m²: giá dự đoán = 16.075 tỷ đồng.
