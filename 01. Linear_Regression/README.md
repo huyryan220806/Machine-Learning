@@ -54,7 +54,7 @@ Có thể chạy từ thư mục khác bằng đường dẫn đầy đủ tới
 ## Cấu trúc thư mục
 
 ```text
-bai01_hoi_quy/
+01. Linear_Regression/
 ├── code/
 │   ├── Baitap.ipynb
 │   └── Lab1_NguyenDinhHuy.ipynb

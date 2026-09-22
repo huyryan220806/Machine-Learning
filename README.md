@@ -14,13 +14,13 @@ Repository lưu mã nguồn, dữ liệu và kết quả các bài thực hành 
 
 | Bài | Nội dung | Hướng dẫn |
 | --- | --- | --- |
-| 01 | Hồi quy tuyến tính: phân tích dữ liệu giá nhà, bình phương tối thiểu, đánh giá mô hình, gradient descent và hồi quy nhiều biến. | [Bài 01 — Hồi quy tuyến tính](bai01_hoi_quy/README.md) |
+| 01 | Hồi quy tuyến tính: phân tích dữ liệu giá nhà, bình phương tối thiểu, đánh giá mô hình, gradient descent và hồi quy nhiều biến. | [Bài 01 — Hồi quy tuyến tính](01.%20Linear_Regression/README.md) |
 
 ## Cấu trúc repository
 
 ```text
 Machine-Learning/
-├── bai01_hoi_quy/
+├── 01. Linear_Regression/
 │   ├── code/                 # Notebook thực hành và bài tập
 │   ├── data/                 # Dữ liệu gia_nha.csv
 │   ├── figures/              # Biểu đồ PNG
@@ -39,7 +39,7 @@ Clone repository hoặc chọn **Code → Download ZIP**, rồi giải nén toà
 
 ```sh
 git clone https://github.com/huyryan220806/Machine-Learning.git
-cd Machine-Learning/bai01_hoi_quy
+cd "Machine-Learning/01. Linear_Regression"
 ```
 
 Cài các thư viện bằng Python của môi trường đang dùng, sau đó chạy toàn bộ bài:
@@ -51,7 +51,7 @@ python scripts/run_all.py
 
 Script chạy notebook Lab trước, sau đó notebook bài tập. Kết quả được lưu trong notebook, nhật ký dạng chữ ở `outputs/`, và biểu đồ ở `figures/`.
 
-Để đọc và chạy từng cell, mở Jupyter từ thư mục `bai01_hoi_quy`:
+Để đọc và chạy từng cell, mở Jupyter từ thư mục `01. Linear_Regression`:
 
 ```sh
 python -m notebook
@@ -61,10 +61,10 @@ Mở notebook trong `code/`, chọn kernel đã cài thư viện và chạy từ
 
 ## Tệp bài 01
 
-- [Notebook thực hành](bai01_hoi_quy/code/Lab1_NguyenDinhHuy.ipynb).
-- [Notebook bài tập 1–6](bai01_hoi_quy/code/Baitap.ipynb).
-- [Dữ liệu giá nhà](bai01_hoi_quy/data/gia_nha.csv).
-- [Biểu đồ](bai01_hoi_quy/figures/) và [kết quả chạy](bai01_hoi_quy/outputs/).
-- [Hướng dẫn chi tiết và cấu trúc thư mục](bai01_hoi_quy/README.md).
+- [Notebook thực hành](01.%20Linear_Regression/code/Lab1_NguyenDinhHuy.ipynb).
+- [Notebook bài tập 1–6](01.%20Linear_Regression/code/Baitap.ipynb).
+- [Dữ liệu giá nhà](01.%20Linear_Regression/data/gia_nha.csv).
+- [Biểu đồ](01.%20Linear_Regression/figures/) và [kết quả chạy](01.%20Linear_Regression/outputs/).
+- [Hướng dẫn chi tiết và cấu trúc thư mục](01.%20Linear_Regression/README.md).
 
 Đường dẫn dữ liệu được xác định trong dự án, không phụ thuộc ổ đĩa hay tên người dùng. Khi chia sẻ hoặc di chuyển bài thực hành, giữ nguyên `code/`, `data/` và `scripts/` trong cùng thư mục bài.
