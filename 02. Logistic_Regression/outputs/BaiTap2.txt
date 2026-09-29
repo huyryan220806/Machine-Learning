@@ -1,0 +1,63 @@
+--- Bài tập 1: Thống kê theo nhóm ---
+Số sinh viên có điểm giữa kỳ từ 7 trở lên: 31
+Tỷ lệ qua môn của nhóm điểm từ 7: 0.9032 (90.32%)
+Tỷ lệ qua môn của nhóm còn lại: 0.4831 (48.31%)
+Nhận xét: Nhóm có điểm giữa kỳ từ 7 có tỷ lệ qua môn cao hơn, nên điểm giữa kỳ giúp phân biệt hai nhóm trong mẫu này, nhưng không quyết định hoàn toàn việc qua môn.
+
+--- Bài tập 2: Vẽ hàm sigmoid ---
+[Biểu đồ hiển thị trong notebook]
+Đã lưu hình: figures/sigmoid.png
+
+--- Bài tập 3: Dự đoán cho một bạn cụ thể ---
+w = 0.392819; b = -5.064890
+Giờ ôn      z          Xác suất qua   Nhãn
+   3.00   -3.886432       0.020106   0
+   8.00   -1.922336       0.127601   0
+  12.89   -0.001451       0.499637   0
+  18.00    2.005855       0.881410   1
+  26.00    5.148409       0.994225   1
+Giải thích: Tại giờ ôn = -b/w = 12.893693, z = 0 nên sigmoid(z) = 0.5.
+12.89 là giá trị đã làm tròn của mốc này, nên xác suất chỉ gần 0.5; nhãn được tính từ xác suất chưa làm tròn.
+
+--- Bài tập 4: Tự tính bốn thước đo ---
+TN = 9; FP = 3; FN = 1; TP = 17
+Thước đo       Tự tính    Tài liệu
+Accuracy       0.8667    0.8667
+Precision      0.8500    0.8500
+Recall         0.9444    0.9444
+F1             0.8947    0.8947
+Nhận xét: Cả bốn kết quả tự tính đều khớp kết quả thư viện trong tài liệu khi làm tròn đến bốn chữ số thập phân.
+
+--- Bài tập 5: Dò ngưỡng tốt nhất theo F1 ---
+Ngưỡng       F1
+0.05       0.7826
+0.10       0.8182
+0.15       0.8182
+0.20       0.8571
+0.25       0.9000
+0.30       0.8947
+0.35       0.8947
+0.40       0.8947
+0.45       0.8947
+0.50       0.8947
+0.55       0.8889
+0.60       0.9412
+0.65       0.9412
+0.70       0.9091
+0.75       0.8750
+0.80       0.8387
+0.85       0.8000
+0.90       0.5600
+0.95       0.4348
+F1 cao nhất: 0.9412
+Các ngưỡng tốt nhất: 0.60, 0.65
+Nhận xét: Ngưỡng cho F1 cao nhất trên tập kiểm tra này khác 0.5.
+Đây là kết quả dò trên tập kiểm tra của bài tập; khi đánh giá mô hình thực tế, nên chọn ngưỡng trên tập validation rồi chấm trên tập kiểm tra riêng.
+
+--- Bài tập 6: Đổi lớp dương rồi chấm lại ---
+Lớp dương       Precision   Recall
+1 (qua môn)     0.8500      0.9444
+0 (rớt môn)     0.9000      0.7500
+Giải thích: Đổi lớp dương làm đổi ý nghĩa đúng dương, sai dương và sai âm, dù mô hình và các dự đoán không thay đổi.
+Với lớp 0: precision = TN/(TN+FN) = 9/(9+1) = 0.9000; recall = TN/(TN+FP) = 9/(9+3) = 0.7500, theo các ô của ma trận khi lớp 1 là lớp dương.
+Với lớp 1: precision = 17/(17+3) = 0.8500; recall = 17/(17+1) = 0.9444. Hai bộ số khác nhau vì đang đánh giá hai nhóm sinh viên khác nhau.
