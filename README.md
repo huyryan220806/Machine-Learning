@@ -16,6 +16,7 @@ Repository lưu mã nguồn, dữ liệu và kết quả các bài thực hành 
 | --- | --- | --- |
 | 01 | Hồi quy tuyến tính: phân tích dữ liệu giá nhà, bình phương tối thiểu, đánh giá mô hình, gradient descent và hồi quy nhiều biến. | [Bài 01 — Hồi quy tuyến tính](01.%20Linear_Regression/README.md) |
 | 02 | Logistic Regression: sigmoid, phân loại sinh viên, confusion matrix, các thước đo đánh giá, ngưỡng phân loại và mô hình nhiều biến. | [Bài 02 — Logistic Regression](02.%20Logistic_Regression/README.md) |
+| 03 | Naive Bayes: định lý Bayes, túi từ, lọc thư rác, làm trơn Laplace, GaussianNB và 6 bài tập mục 7. | [Bài 03 — Naive Bayes](03.%20Naive_Bayes/README.md) |
 
 ## Cấu trúc repository
 
@@ -37,6 +38,15 @@ Machine-Learning/
 │   ├── outputs/              # Kết quả chạy hai notebook
 │   ├── scripts/
 │   │   └── run_all.py        # Chạy toàn bộ notebook của bài 02
+│   ├── requirements.txt
+│   └── README.md
+├── 03. Naive_Bayes/
+│   ├── code/                 # 5 notebook thực hành và 6 notebook bài tập
+│   ├── data/                 # tin_nhan.csv và sinh_vien.csv
+│   ├── figures/              # 5 hình minh họa PNG
+│   ├── outputs/              # Kết quả TXT của từng notebook
+│   ├── scripts/
+│   │   └── run_all.py        # Chạy toàn bộ 11 notebook của bài 03
 │   ├── requirements.txt
 │   └── README.md
 ├── .gitignore
@@ -96,3 +106,20 @@ Các tệp chính:
 - [Dữ liệu sinh viên](02.%20Logistic_Regression/data/sinh_vien.csv).
 - [Biểu đồ](02.%20Logistic_Regression/figures/) và [kết quả chạy](02.%20Logistic_Regression/outputs/).
 - [Hướng dẫn chi tiết](02.%20Logistic_Regression/README.md).
+
+## Tải và chạy bài 03
+
+Từ thư mục chứa repository, chạy:
+
+```sh
+cd "Machine-Learning/03. Naive_Bayes"
+python -m pip install -r requirements.txt
+python scripts/run_all.py
+```
+
+Mỗi bài có một notebook độc lập trong `code/`. Script chạy 5 bài thực hành trước, sau đó 6 bài tập mục 7; cập nhật kết quả trong notebook, lưu bản chữ vào `outputs/` và hình vào `figures/`. Đường dẫn được xác định theo vị trí dự án nên không cần sửa khi tải về máy khác.
+
+- [11 notebook thực hành và bài tập](03.%20Naive_Bayes/code/).
+- [Dữ liệu tin nhắn](03.%20Naive_Bayes/data/tin_nhan.csv) và [dữ liệu sinh viên](03.%20Naive_Bayes/data/sinh_vien.csv).
+- [Hình minh họa](03.%20Naive_Bayes/figures/) và [kết quả chạy](03.%20Naive_Bayes/outputs/).
+- [README Lab 3: từng bài, cách chạy và đối chiếu kết quả](03.%20Naive_Bayes/README.md).

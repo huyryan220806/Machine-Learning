@@ -1,0 +1,9 @@
+--- Bài tập 1 — Bayes với ba nguyên nhân ---
+
+--- Mã và kết quả ---
+P(qua môn) = 0.50×0.95 + 0.30×0.70 + 0.20×0.30 = 0.7450
+P(Học đều | qua môn) = 0.637584 (63.76%)
+P(Học dồn | qua môn) = 0.281879 (28.19%)
+P(Ít học | qua môn) = 0.080537 (8.05%)
+Tổng xác suất hậu nghiệm = 1.000000
+Tổng bằng 1: ba nhóm bao phủ toàn bộ lớp và không giao nhau.

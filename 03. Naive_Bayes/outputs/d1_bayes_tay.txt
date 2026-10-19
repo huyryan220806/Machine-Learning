@@ -1,0 +1,24 @@
+--- Thực hành 1 — Tính định lý Bayes bằng tay ---
+
+--- Mã và kết quả ---
+Vi du 1: xet nghiem benh
+  Ty le mac benh 1 phan tram, xet nghiem dung 99 phan tram.
+  Duong tinh thi kha nang co benh that = 0.5000
+
+Cung xet nghiem do, doi ty le mac benh:
+  Ty le mac benh    Hau nghiem khi duong tinh
+     0.001             0.0902
+     0.010             0.5000
+     0.050             0.8390
+     0.100             0.9167
+     0.500             0.9900
+
+Vi du 2: hai day chuyen san xuat
+  Day A lam 80 phan tram san pham, ty le loi 1 phan tram.
+  Day B lam 20 phan tram san pham, ty le loi 5 phan tram.
+  Nhat duoc san pham loi, kha nang no tu day B = 0.5556
+
+Kiem lai bang cach dem tren 1000 san pham:
+  Day A: 800 san pham, 8 cai loi
+  Day B: 200 san pham, 10 cai loi
+  Ty le tu day B = 10.0 / 18.0 = 0.5556

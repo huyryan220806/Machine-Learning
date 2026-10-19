@@ -1,0 +1,9 @@
+--- Bài tập 4 — Tự viết bộ lọc bằng tổng log ---
+
+--- Mã và kết quả ---
+Số tin học: 225; kiểm tra: 75; số từ: 40
+Accuracy tự viết       = 0.9467
+Accuracy MultinomialNB = 0.9467
+Số dự đoán khác nhau  = 0
+Giải thích: Tổng log tương đương so sánh tích xác suất vì log là hàm đồng biến; cách tính này tránh tích nhiều số nhỏ bị tràn dưới về 0.
+Làm trơn cộng alpha vào số đếm và alpha×V vào tổng số từ, nên từ trong từ điển nhưng chưa gặp ở một lớp vẫn có xác suất dương. Từ hoàn toàn ngoài từ điển bị bỏ qua.

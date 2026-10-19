@@ -1,0 +1,25 @@
+--- Thực hành 5 — GaussianNB cho số liệu liên tục ---
+
+--- Mã và kết quả ---
+Naive Bayes    : accuracy = 0.9000
+Hoi quy logistic: accuracy = 0.9000
+
+Nhung gi Naive Bayes hoc duoc
+                       gio_on   diem_giua_ky
+  Lop 0 (rot) trung binh       8.18           3.99
+              do lech         5.29           1.92
+  Lop 1 (qua) trung binh      20.03           6.70
+              do lech         5.81           1.50
+
+Ty le tung lop trong tap hoc: 0.4111, 0.5889
+
+Du doan cho bon ban moi:
+    gio on   diem GK   P(qua mon)
+         5       4.0       0.0137
+        13       6.0       0.6550
+        20       7.0       0.9855
+        28       9.0       0.9999
+
+--- Hình minh họa bổ sung ---
+[Biểu đồ hiển thị trong notebook]
+[Biểu đồ hiển thị trong notebook]

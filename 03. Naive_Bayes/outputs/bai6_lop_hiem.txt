@@ -1,0 +1,17 @@
+--- Bài tập 6 — Lớp hiếm và xác suất tiên nghiệm ---
+
+--- Mã và kết quả ---
+Số tin theo lớp trong bộ mới:
+la_rac
+0    180
+1     20
+Name: count, dtype: int64
+Tập học: 150; tập kiểm tra: 50
+Tiên nghiệm lớp thường: 0.9000; lớp rác: 0.1000
+TN = 45; FP = 0; FN = 1; TP = 4
+Accuracy = 0.9800
+Recall lớp rác = 0.8000
+Luôn đoán thường: accuracy = 0.9000; recall lớp rác = 0.0000
+Nhận xét: Bộ lọc bắt được 4/5 tin rác trong tập kiểm tra. Cần đọc recall lớp rác cùng accuracy để biết khả năng lọc thực tế.
+Vì 90% dữ liệu là tin thường, chỉ đoán thường đã đạt accuracy 90% nhưng bỏ lọt toàn bộ tin rác. Accuracy cao riêng lẻ không chứng minh bộ lọc tốt khi các lớp mất cân bằng.
+Tiên nghiệm nghiêng về lớp thường, còn các xác suất từ của lớp rác chỉ được học từ ít tin; do đó kết quả cũng nhạy với các tin rác được chọn.
