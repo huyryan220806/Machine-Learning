@@ -8,7 +8,7 @@
 - **LHP:** 261_71ITAI41203_0101
 - **GVHD:** ThS. Nguyễn Thái Anh ([GitHub](https://github.com/AnhNguyenVLU))
 
-Lab 3 gồm **5 notebook thực hành và 6 notebook bài tập mục 7**, mỗi bài một tệp chạy độc lập. Nội dung dựa trên tài liệu *Bài 3: Naive Bayes* của giảng viên. Mã thực hành giữ công thức, dữ liệu ví dụ, cách tách từ, tham số và cách chia dữ liệu trong tài liệu; phần thiết lập đường dẫn và các cell vẽ hình được bổ sung để dễ chạy và lưu kết quả.
+Lab 3 gồm **2 notebook**: phần thực hành gồm **5 cell code**, phần bài tập mục 7 gồm **6 cell code**. Mỗi mục có tiêu đề Markdown và đúng một cell code. Nội dung dựa trên tài liệu *Bài 3: Naive Bayes* của giảng viên. Mã thực hành giữ công thức, dữ liệu ví dụ, cách tách từ, tham số và cách chia dữ liệu trong tài liệu; phần thiết lập đường dẫn và mã vẽ hình trong từng cell được bổ sung để dễ chạy và lưu kết quả.
 
 ## Dataset
 
@@ -19,33 +19,39 @@ Lab 3 gồm **5 notebook thực hành và 6 notebook bài tập mục 7**, mỗi
 
 ## Phần thực hành
 
-| Notebook | Theo tài liệu | Nội dung |
+Mở [Lab3_NguyenDinhHuy.ipynb](code/Lab3_NguyenDinhHuy.ipynb).
+
+| Cell code | Theo tài liệu | Nội dung |
 | --- | --- | --- |
-| [d1_bayes_tay.ipynb](code/d1_bayes_tay.ipynb) | Mục 2.4 | Tính Bayes bằng tay: ví dụ xét nghiệm, thay đổi tiên nghiệm và hai dây chuyền sản xuất. |
-| [d2_tui_tu.ipynb](code/d2_tui_tu.ipynb) | Mục 3.3 | Đọc tin nhắn, CountVectorizer và thống kê số lần xuất hiện của từ theo lớp. |
-| [d3_loc_thu_rac.ipynb](code/d3_loc_thu_rac.ipynb) | Mục 4.2 | MultinomialNB, ma trận nhầm lẫn, accuracy/precision/recall và thử ba tin mới. |
-| [d4_lam_tron.ipynb](code/d4_lam_tron.ipynb) | Mục 5.3 | Tự tính xác suất trên kho sáu tin, so sánh alpha = 0 và alpha = 1. |
-| [d5_gaussian.ipynb](code/d5_gaussian.ipynb) | Mục 6.2 | So sánh GaussianNB với Logistic Regression, đọc tham số từng lớp và dự đoán sinh viên mới. |
+| Cell 1 | Mục 2.4 | Tính Bayes bằng tay: ví dụ xét nghiệm, thay đổi tiên nghiệm và hai dây chuyền sản xuất. |
+| Cell 2 | Mục 3.3 | Đọc tin nhắn, CountVectorizer và thống kê số lần xuất hiện của từ theo lớp. |
+| Cell 3 | Mục 4.2 | MultinomialNB, ma trận nhầm lẫn, accuracy/precision/recall và thử ba tin mới. |
+| Cell 4 | Mục 5.3 | Tự tính xác suất trên kho sáu tin, so sánh alpha = 0 và alpha = 1. |
+| Cell 5 | Mục 6.2 | So sánh GaussianNB với Logistic Regression, đọc tham số từng lớp và dự đoán sinh viên mới. |
 
 ## Bài tập mục 7
 
-| Notebook | Nội dung |
+Mở [BaiTap3.ipynb](code/BaiTap3.ipynb).
+
+| Cell code | Nội dung |
 | --- | --- |
-| [bai1_bayes_ba_nguyen_nhan.ipynb](code/bai1_bayes_ba_nguyen_nhan.ipynb) | Tính hậu nghiệm ba nhóm sinh viên và kiểm tra tổng bằng 1. |
-| [bai2_tu_to_cao.ipynb](code/bai2_tu_to_cao.ipynb) | Tìm 5 từ nghiêng mạnh nhất về mỗi lớp bằng hiệu `feature_log_prob_`. |
-| [bai3_doi_alpha.ipynb](code/bai3_doi_alpha.ipynb) | Thử alpha = 0.001, 0.1, 1, 10, 100 và nhận xét các số đo. |
-| [bai4_tu_viet_bo_loc.ipynb](code/bai4_tu_viet_bo_loc.ipynb) | Tự đếm từ, làm trơn, tính tổng log và so với MultinomialNB trên cùng tập kiểm tra. |
-| [bai5_sai_bien_the.ipynb](code/bai5_sai_bien_the.ipynb) | Thử MultinomialNB trên số liệu liên tục, so với GaussianNB và giải thích. |
-| [bai6_lop_hiem.ipynb](code/bai6_lop_hiem.ipynb) | Giữ 180 tin thường và 20 tin rác đầu tiên; phân tích accuracy, recall và tiên nghiệm. |
+| Cell 1 | Tính hậu nghiệm ba nhóm sinh viên và kiểm tra tổng bằng 1. |
+| Cell 2 | Tìm 5 từ nghiêng mạnh nhất về mỗi lớp bằng hiệu `feature_log_prob_`. |
+| Cell 3 | Thử alpha = 0.001, 0.1, 1, 10, 100 và nhận xét các số đo. |
+| Cell 4 | Tự đếm từ, làm trơn, tính tổng log và so với MultinomialNB trên cùng tập kiểm tra. |
+| Cell 5 | Thử MultinomialNB trên số liệu liên tục, so với GaussianNB và giải thích. |
+| Cell 6 | Giữ 180 tin thường và 20 tin rác đầu tiên; phân tích accuracy, recall và tiên nghiệm. |
 
 ## Cấu trúc thư mục
 
 ```text
 03. Naive_Bayes/
-├── code/                # 11 notebook độc lập, đã lưu kết quả chạy
+├── code/
+│   ├── Lab3_NguyenDinhHuy.ipynb  # 5 cell code thực hành
+│   └── BaiTap3.ipynb             # 6 cell code bài tập mục 7
 ├── data/                # tin_nhan.csv và sinh_vien.csv
 ├── figures/             # 5 hình PNG được tạo khi chạy
-├── outputs/             # 11 tệp TXT, tên khớp từng notebook
+├── outputs/             # 2 tệp TXT, chia kết quả theo tiêu đề từng mục
 ├── scripts/
 │   └── run_all.py
 ├── requirements.txt
@@ -63,7 +69,7 @@ python -m pip install -r requirements.txt
 python scripts/run_all.py
 ```
 
-`run_all.py` tự tìm thư mục bài từ vị trí của script, nên cũng có thể gọi bằng đường dẫn đầy đủ từ thư mục khác. Script chạy `d1` đến `d5` rồi `bai1` đến `bai6`, mỗi notebook có kernel riêng sử dụng đúng Python đang chạy script.
+`run_all.py` tự tìm thư mục bài từ vị trí của script, nên cũng có thể gọi bằng đường dẫn đầy đủ từ thư mục khác. Script chạy `Lab3_NguyenDinhHuy.ipynb` trước rồi `BaiTap3.ipynb`, mỗi notebook có kernel riêng sử dụng đúng Python đang chạy script.
 
 Khi thành công, script cập nhật kết quả trong notebook và ghi bản chữ vào `outputs/<tên_notebook>.txt`. Hình được lưu bằng `savefig(..., dpi=150)` trước `show()`. Nếu gặp lỗi, script dừng, ghi lỗi vào nhật ký và không ghi đè notebook đang lỗi. Mỗi cell có thời gian chạy tối đa 300 giây.
 
@@ -89,7 +95,7 @@ Trên Colab, tải `tin_nhan.csv` và `sinh_vien.csv` vào Files (thường là 
 
 ## Đối chiếu với tài liệu
 
-Các bài có chia dữ liệu dùng `test_size=0.25`, `random_state=17`, `stratify=y`; bộ lọc chuẩn dùng `alpha=1.0`. Các notebook thực hành và bài 3/6 giữ thứ tự vector hóa toàn bộ rồi chia như mã mẫu. Với một dự án thực tế, nên chia văn bản trước và chỉ học từ điển trên tập học; bài tập 4 thực hiện cách này cho cả bộ lọc tự viết lẫn mô hình đối chiếu.
+Các bài có chia dữ liệu dùng `test_size=0.25`, `random_state=17`, `stratify=y`; bộ lọc chuẩn dùng `alpha=1.0`. Các cell thực hành và bài 3/6 giữ thứ tự vector hóa toàn bộ rồi chia như mã mẫu. Với một dự án thực tế, nên chia văn bản trước và chỉ học từ điển trên tập học; bài tập 4 thực hiện cách này cho cả bộ lọc tự viết lẫn mô hình đối chiếu.
 
 Kết quả cần đối chiếu: Bayes ví dụ xét nghiệm **0.5000**, dây chuyền B **0.5556**, từ điển **40 từ**; bộ lọc chuẩn có **TN=45, FP=0, FN=4, TP=26**, accuracy **0.9467**, precision **1.0000**, recall **0.8667**. GaussianNB và Logistic Regression trên dữ liệu sinh viên đều có accuracy **0.9000**.
 

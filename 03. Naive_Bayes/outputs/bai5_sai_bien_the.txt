@@ -1,8 +1,0 @@
---- Bài tập 5 — Chọn sai biến thể Naive Bayes ---
-
---- Mã và kết quả ---
-MultinomialNB : accuracy = 0.8000
-GaussianNB    : accuracy = 0.9000
-Chương trình không báo lỗi vì hai cột đều không âm, đáp ứng kiểm tra đầu vào của MultinomialNB.
-Nhận xét: Giờ ôn và điểm giữa kỳ là dữ liệu liên tục, không phải số lần xuất hiện của các loại sự kiện. MultinomialNB coi chúng như số đếm nên dùng sai giả định thống kê dù vẫn chạy được.
-GaussianNB mô hình hóa trung bình và phương sai theo từng lớp, phù hợp với cách xử lý số liệu liên tục trong bài; accuracy trên một lần chia không thay thế việc kiểm tra giả định mô hình.

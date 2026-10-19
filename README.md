@@ -41,12 +41,12 @@ Machine-Learning/
 │   ├── requirements.txt
 │   └── README.md
 ├── 03. Naive_Bayes/
-│   ├── code/                 # 5 notebook thực hành và 6 notebook bài tập
+│   ├── code/                 # 2 notebook: thực hành (5 cell) và bài tập (6 cell)
 │   ├── data/                 # tin_nhan.csv và sinh_vien.csv
 │   ├── figures/              # 5 hình minh họa PNG
 │   ├── outputs/              # Kết quả TXT của từng notebook
 │   ├── scripts/
-│   │   └── run_all.py        # Chạy toàn bộ 11 notebook của bài 03
+│   │   └── run_all.py        # Chạy 2 notebook của bài 03
 │   ├── requirements.txt
 │   └── README.md
 ├── .gitignore
@@ -117,9 +117,9 @@ python -m pip install -r requirements.txt
 python scripts/run_all.py
 ```
 
-Mỗi bài có một notebook độc lập trong `code/`. Script chạy 5 bài thực hành trước, sau đó 6 bài tập mục 7; cập nhật kết quả trong notebook, lưu bản chữ vào `outputs/` và hình vào `figures/`. Đường dẫn được xác định theo vị trí dự án nên không cần sửa khi tải về máy khác.
+`code/` gồm `Lab3_NguyenDinhHuy.ipynb` (5 cell code thực hành) và `BaiTap3.ipynb` (6 cell code bài tập mục 7). Mỗi mục có tiêu đề và một cell code. Script chạy notebook thực hành trước, sau đó notebook bài tập; cập nhật kết quả trong notebook, lưu bản chữ vào `outputs/` và hình vào `figures/`. Đường dẫn được xác định theo vị trí dự án nên không cần sửa khi tải về máy khác.
 
-- [11 notebook thực hành và bài tập](03.%20Naive_Bayes/code/).
+- [Notebook thực hành](03.%20Naive_Bayes/code/Lab3_NguyenDinhHuy.ipynb) và [notebook bài tập mục 7](03.%20Naive_Bayes/code/BaiTap3.ipynb).
 - [Dữ liệu tin nhắn](03.%20Naive_Bayes/data/tin_nhan.csv) và [dữ liệu sinh viên](03.%20Naive_Bayes/data/sinh_vien.csv).
 - [Hình minh họa](03.%20Naive_Bayes/figures/) và [kết quả chạy](03.%20Naive_Bayes/outputs/).
 - [README Lab 3: từng bài, cách chạy và đối chiếu kết quả](03.%20Naive_Bayes/README.md).

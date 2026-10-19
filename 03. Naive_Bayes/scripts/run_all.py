@@ -40,7 +40,7 @@ def main():
     thu_muc_ket_qua = thu_muc_du_an / "outputs"
     cac_notebook = sorted(
         (thu_muc_du_an / "code").glob("*.ipynb"),
-        key=lambda p: (not p.name.lower().startswith("d"), p.name.lower()),
+        key=lambda p: (not p.name.lower().startswith("lab"), p.name.lower()),
     )
     if not cac_notebook:
         print("Không tìm thấy notebook trong thư mục code/.", file=sys.stderr)
