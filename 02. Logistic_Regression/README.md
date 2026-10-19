@@ -8,21 +8,48 @@
 - **LHP:** 261_71ITAI41203_0101
 - **GVHD:** ThS. Nguyễn Thái Anh ([GitHub](https://github.com/AnhNguyenVLU))
 
-## Nội dung bài thực hành
+## Tổng quan
 
-Bài 02 xây dựng mô hình phân loại dự đoán sinh viên qua môn từ số giờ ôn và điểm giữa kỳ. Nội dung gồm:
+Xây dựng mô hình phân loại sinh viên qua môn từ số giờ ôn và điểm giữa kỳ. Bài gồm hai notebook: thực hành theo tài liệu và lời giải bài tập 1–6.
 
-- Đọc và thống kê dữ liệu sinh viên.
-- Tính và kiểm tra hàm sigmoid.
-- Huấn luyện Logistic Regression bằng scikit-learn.
-- Đánh giá bằng confusion matrix, accuracy, precision, recall và F1.
-- Khảo sát ảnh hưởng của ngưỡng phân loại.
-- So sánh mô hình một biến và hai biến.
+| Phần | Notebook | Nội dung |
+| --- | --- | --- |
+| Thực hành | [Lab2_NguyenDinhHuy.ipynb](code/Lab2_NguyenDinhHuy.ipynb) | 6 bước thực hành theo tài liệu. |
+| Bài tập | [BaiTap2.ipynb](code/BaiTap2.ipynb) | 6 bài tập, mỗi bài một cell code có tiêu đề. |
 
-Hai notebook chính:
+## Dữ liệu
 
-- `code/Lab2_NguyenDinhHuy.ipynb`: các bước thực hành theo tài liệu.
-- `code/BaiTap2.ipynb`: lời giải sáu bài tập, gồm nhận xét và biểu đồ sigmoid.
+| Tệp | Quy mô | Các cột |
+| --- | --- | --- |
+| [sinh_vien.csv](data/sinh_vien.csv) | 120 sinh viên, 3 cột | `gio_on`, `diem_giua_ky`, `qua_mon` |
+
+Nhãn `qua_mon` bằng 1 nghĩa là qua môn, bằng 0 nghĩa là rớt môn. Dữ liệu có 71 sinh viên qua môn và 49 sinh viên rớt môn.
+
+## Phần thực hành
+
+Mở [Lab2_NguyenDinhHuy.ipynb](code/Lab2_NguyenDinhHuy.ipynb) và chạy các cell từ trên xuống.
+
+| Mục | Nội dung |
+| --- | --- |
+| Bước 1 | Đọc dữ liệu và thống kê theo nhóm qua/rớt môn. |
+| Bước 2 | Tính hàm sigmoid, kiểm tra tính chất và mô hình giả định. |
+| Bước 3 | Huấn luyện Logistic Regression một biến và dự đoán sinh viên mới. |
+| Bước 4 | Chia dữ liệu, đọc confusion matrix và tính bốn thước đo. |
+| Bước 5 | Thay ngưỡng phân loại, quan sát precision và recall. |
+| Bước 6 | Thêm điểm giữa kỳ, so sánh mô hình một biến và hai biến. |
+
+## Phần bài tập
+
+Mở [BaiTap2.ipynb](code/BaiTap2.ipynb). Mỗi bài có một cell code và tiêu đề riêng. Chạy từ bài 1 đến bài 6 để khởi tạo đầy đủ dữ liệu và mô hình.
+
+| Bài | Nội dung |
+| --- | --- |
+| Bài 1 | Thống kê và so sánh tỷ lệ qua môn theo nhóm điểm giữa kỳ. |
+| Bài 2 | Vẽ sigmoid trên đoạn từ −8 đến 8, thêm đường mức 0.5 và trục z = 0. |
+| Bài 3 | Viết hàm dự đoán z, xác suất và nhãn cho số giờ ôn cụ thể. |
+| Bài 4 | Tự tính accuracy, precision, recall và F1 từ TP, TN, FP, FN. |
+| Bài 5 | Dò ngưỡng từ 0.05 đến 0.95 để tìm F1 cao nhất. |
+| Bài 6 | Đổi lớp dương thành lớp rớt môn, so sánh precision và recall. |
 
 ## Cấu trúc thư mục
 
@@ -31,67 +58,65 @@ Hai notebook chính:
 ├── code/
 │   ├── Lab2_NguyenDinhHuy.ipynb
 │   └── BaiTap2.ipynb
-├── data/
-│   └── sinh_vien.csv
-├── figures/
-│   └── sigmoid.png
-├── outputs/
-│   ├── Lab2_NguyenDinhHuy.txt
-│   └── BaiTap2.txt
+├── data/                # Dữ liệu CSV
+├── figures/             # Biểu đồ PNG
+├── outputs/             # Kết quả dạng chữ của từng notebook
 ├── scripts/
-│   └── run_all.py
-├── README.md
-└── requirements.txt
+│   └── run_all.py        # Chạy toàn bộ notebook
+├── requirements.txt
+└── README.md
 ```
 
-| Thư mục / tệp | Chức năng |
-| --- | --- |
-| `code/` | Chứa notebook thực hành và bài tập. |
-| `data/sinh_vien.csv` | Dữ liệu 120 sinh viên gồm số giờ ôn, điểm giữa kỳ và kết quả qua môn. |
-| `figures/sigmoid.png` | Đồ thị hàm sigmoid từ bài tập 2. |
-| `outputs/` | Kết quả dạng chữ được xuất từ hai notebook. |
-| `scripts/run_all.py` | Chạy toàn bộ notebook, lưu kết quả vào notebook và xuất nhật ký. |
-| `requirements.txt` | Danh sách thư viện Python cần cài. |
+Giữ nguyên `code/`, `data/`, `scripts/` và `requirements.txt` trong cùng thư mục bài khi tải ZIP, clone hoặc di chuyển dự án. `figures/` và `outputs/` được tạo hoặc cập nhật khi chạy.
 
-## Chạy toàn bộ và xuất kết quả
+## Cài đặt và chạy toàn bộ
 
-Mở terminal trong thư mục `02. Logistic_Regression`, chạy:
+Mở terminal tại thư mục `02. Logistic_Regression`, chạy:
 
 ```sh
 python -m pip install -r requirements.txt
 python scripts/run_all.py
 ```
 
-Script chạy `code/Lab2_NguyenDinhHuy.ipynb` trước, sau đó `code/BaiTap2.ipynb`. Mỗi notebook có kernel riêng, dùng đúng Python đang chạy script. Có thể gọi script bằng đường dẫn đầy đủ từ thư mục khác.
+Script chạy notebook thực hành trước, sau đó notebook bài tập. Mỗi notebook dùng kernel riêng với đúng Python đang chạy script. Có thể gọi script bằng đường dẫn đầy đủ từ thư mục khác; script tự tìm thư mục bài từ vị trí của chính nó.
 
-Sau khi chạy thành công:
+Kết quả được cập nhật trong notebook và xuất thành các tệp `.txt` ở `outputs/`; hình được lưu vào `figures/`. Mỗi lần chạy thay thế nhật ký cũ. Mỗi cell có tối đa 300 giây; nếu gặp lỗi, script dừng và không ghi đè notebook đang lỗi. Xem thông báo terminal và nhật ký trong `outputs/` để kiểm tra.
 
-- `outputs/Lab2_NguyenDinhHuy.txt`: kết quả thực hành, gồm cả bảng được in bằng `display()`.
-- `outputs/BaiTap2.txt`: kết quả sáu bài tập.
-- `figures/sigmoid.png`: biểu đồ sigmoid của bài tập 2.
-- Hai notebook trong `code/` được lưu lại với kết quả thực thi mới, giữ nguyên mã và các tiêu đề đã chỉnh trên Colab.
+## Chạy từng notebook và Google Colab
 
-Mỗi lần chạy sẽ cập nhật các tệp kết quả, không nối lặp nhật ký cũ. Nếu một cell lỗi, script dừng, lưu nhật ký lỗi trong `outputs` và không ghi đè notebook đang lỗi.
+Mở notebook bằng VS Code hoặc khởi động Jupyter từ thư mục bài:
 
-## Khi chỉnh sửa trên Colab
+```sh
+python -m notebook
+```
 
-Sau khi chỉnh notebook trên Colab, tải lại tệp `.ipynb` và lưu đè bản tương ứng trong `code/`, rồi chạy script. Script dùng bản trên máy, không tự đồng bộ thay đổi trên Colab.
+Chọn kernel đã cài thư viện, mở notebook trong `code/` và chọn **Run All**. Các notebook dùng đường dẫn dữ liệu trong dự án, không phụ thuộc ổ đĩa hay tên người dùng.
 
-Nếu chạy script ngay trên Colab, cần tải toàn bộ thư mục bài (gồm `code`, `data`, `scripts`, `requirements.txt`) lên Colab hoặc Google Drive rồi chuyển tới thư mục bài. Chạy:
+**Trên Colab:** Tải `sinh_vien.csv` trực tiếp vào Files hoặc giữ cấu trúc `data/sinh_vien.csv`. Hình sigmoid được lưu vào `figures/`.
+
+Để xuất nhật ký `.txt` trên Colab, tải đủ thư mục bài và chuyển tới thư mục chứa `requirements.txt`, rồi chạy:
 
 ```python
 %pip install -r requirements.txt
 !python scripts/run_all.py
 ```
 
-Chỉ bấm **Run All** trong notebook sẽ hiển thị kết quả ở notebook; việc xuất các tệp `.txt` trong `outputs` được thực hiện bởi `run_all.py`.
+Chỉ bấm **Run All** trong notebook sẽ hiển thị kết quả trong notebook; `run_all.py` mới xuất nhật ký vào `outputs/`. Sau khi chỉnh sửa trên Colab, tải tệp `.ipynb` về đúng vị trí trong `code/` trước khi chạy script trên máy. Script không tự đồng bộ với Colab.
 
-## Chạy từng notebook
+## Kết quả và hình ảnh
 
-Có thể mở Jupyter từ thư mục bài:
+| Tệp | Nội dung |
+| --- | --- |
+| [Lab2_NguyenDinhHuy.txt](outputs/Lab2_NguyenDinhHuy.txt) | Kết quả phần thực hành. |
+| [BaiTap2.txt](outputs/BaiTap2.txt) | Kết quả phần bài tập. |
+| [sigmoid.png](figures/sigmoid.png) | Đồ thị sigmoid và các đường tham chiếu của bài tập 2. |
 
-```sh
-python -m notebook
-```
+Kết quả chạy và biểu đồ cũng được lưu trong notebook. Mã xuất hình gọi `savefig` trước `show` để lưu đúng hình đang vẽ.
 
-Mở notebook trong `code/`, chọn kernel đã cài đủ thư viện và chạy các cell từ trên xuống. Khi chạy trên Colab, tải `sinh_vien.csv` vào thư mục hiện tại hoặc giữ cấu trúc `data/sinh_vien.csv`.
+## Đối chiếu kết quả
+
+Giữ `test_size=0.25`, `random_state=17` và `stratify=y`: 90 sinh viên dùng để học, 30 sinh viên dùng để kiểm tra.
+
+Mô hình một biến khớp toàn bộ dữ liệu có `w = 0.392819`, `b = -5.064890`; xác suất qua môn bằng 0.5 tại khoảng **12.89 giờ ôn**. Khi đánh giá mô hình một biến trên tập kiểm tra với ngưỡng 0.5: **TN=9, FP=3, FN=1, TP=17**, accuracy **0.8667**, precision **0.8500**, recall **0.9444**, F1 **0.8947**.
+
+Khi đổi ngưỡng hoặc lớp dương, giữ nguyên mô hình và tập kiểm tra để giải thích đúng sự thay đổi của các chỉ số.

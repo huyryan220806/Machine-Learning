@@ -1,4 +1,4 @@
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white) ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat-square) ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white) ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat-square) ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white) ![Jupyter Notebook](https://img.shields.io/badge/Jupyter_Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)
 
 # Bài 03 — Naive Bayes
 
@@ -8,92 +8,116 @@
 - **LHP:** 261_71ITAI41203_0101
 - **GVHD:** ThS. Nguyễn Thái Anh ([GitHub](https://github.com/AnhNguyenVLU))
 
-Lab 3 gồm **2 notebook**: phần thực hành gồm **5 cell code**, phần bài tập mục 7 gồm **6 cell code**. Mỗi mục có tiêu đề Markdown và đúng một cell code. Nội dung dựa trên tài liệu *Bài 3: Naive Bayes* của giảng viên. Mã thực hành giữ công thức, dữ liệu ví dụ, cách tách từ, tham số và cách chia dữ liệu trong tài liệu; phần thiết lập đường dẫn và mã vẽ hình trong từng cell được bổ sung để dễ chạy và lưu kết quả.
+## Tổng quan
 
-## Dataset
+Tìm hiểu định lý Bayes, mô hình túi từ, bộ lọc thư rác và GaussianNB cho dữ liệu liên tục. Bài gồm hai notebook: thực hành có 5 cell code, bài tập mục 7 có 6 cell code; mỗi mục có tiêu đề riêng. Mã thực hành giữ công thức, ví dụ và tham số của giảng viên; bổ sung đường dẫn và hình minh họa trong từng cell.
 
-| Tệp | Nội dung |
-| --- | --- |
-| `data/tin_nhan.csv` | 300 tin nhắn mô phỏng phục vụ giảng dạy: 180 tin thường, 120 tin rác. Cột `noi_dung` là văn bản, `la_rac` là nhãn (0: thường, 1: rác). |
-| `data/sinh_vien.csv` | 120 sinh viên; các cột `gio_on`, `diem_giua_ky`, `qua_mon`. Dùng lại dữ liệu Lab 2 để so sánh GaussianNB và Logistic Regression. |
+| Phần | Notebook | Nội dung |
+| --- | --- | --- |
+| Thực hành | [Lab3_NguyenDinhHuy.ipynb](code/Lab3_NguyenDinhHuy.ipynb) | 5 mục thực hành, mỗi mục một cell code. |
+| Bài tập | [BaiTap3.ipynb](code/BaiTap3.ipynb) | 6 bài tập mục 7, mỗi bài một cell code. |
+
+## Dữ liệu
+
+| Tệp | Quy mô | Các cột |
+| --- | --- | --- |
+| [tin_nhan.csv](data/tin_nhan.csv) | 300 tin nhắn, 2 cột | `noi_dung`, `la_rac` |
+| [sinh_vien.csv](data/sinh_vien.csv) | 120 sinh viên, 3 cột | `gio_on`, `diem_giua_ky`, `qua_mon` |
+
+Tin nhắn là dữ liệu mô phỏng phục vụ giảng dạy: 180 tin thường (`la_rac=0`) và 120 tin rác (`la_rac=1`). Dữ liệu sinh viên dùng lại từ Lab 2; `qua_mon=1` là qua môn, `qua_mon=0` là rớt môn.
 
 ## Phần thực hành
 
-Mở [Lab3_NguyenDinhHuy.ipynb](code/Lab3_NguyenDinhHuy.ipynb).
+Mở [Lab3_NguyenDinhHuy.ipynb](code/Lab3_NguyenDinhHuy.ipynb) và chạy các cell từ trên xuống.
 
-| Cell code | Theo tài liệu | Nội dung |
-| --- | --- | --- |
-| Cell 1 | Mục 2.4 | Tính Bayes bằng tay: ví dụ xét nghiệm, thay đổi tiên nghiệm và hai dây chuyền sản xuất. |
-| Cell 2 | Mục 3.3 | Đọc tin nhắn, CountVectorizer và thống kê số lần xuất hiện của từ theo lớp. |
-| Cell 3 | Mục 4.2 | MultinomialNB, ma trận nhầm lẫn, accuracy/precision/recall và thử ba tin mới. |
-| Cell 4 | Mục 5.3 | Tự tính xác suất trên kho sáu tin, so sánh alpha = 0 và alpha = 1. |
-| Cell 5 | Mục 6.2 | So sánh GaussianNB với Logistic Regression, đọc tham số từng lớp và dự đoán sinh viên mới. |
-
-## Bài tập mục 7
-
-Mở [BaiTap3.ipynb](code/BaiTap3.ipynb).
-
-| Cell code | Nội dung |
+| Mục | Nội dung |
 | --- | --- |
-| Cell 1 | Tính hậu nghiệm ba nhóm sinh viên và kiểm tra tổng bằng 1. |
-| Cell 2 | Tìm 5 từ nghiêng mạnh nhất về mỗi lớp bằng hiệu `feature_log_prob_`. |
-| Cell 3 | Thử alpha = 0.001, 0.1, 1, 10, 100 và nhận xét các số đo. |
-| Cell 4 | Tự đếm từ, làm trơn, tính tổng log và so với MultinomialNB trên cùng tập kiểm tra. |
-| Cell 5 | Thử MultinomialNB trên số liệu liên tục, so với GaussianNB và giải thích. |
-| Cell 6 | Giữ 180 tin thường và 20 tin rác đầu tiên; phân tích accuracy, recall và tiên nghiệm. |
+| Cell 1 — Mục 2.4 | Tính Bayes bằng tay: xét nghiệm, thay đổi tiên nghiệm và hai dây chuyền sản xuất. |
+| Cell 2 — Mục 3.3 | Đọc tin nhắn, CountVectorizer và đếm từ theo lớp. |
+| Cell 3 — Mục 4.2 | MultinomialNB, confusion matrix, accuracy/precision/recall và ba tin mới. |
+| Cell 4 — Mục 5.3 | Tự tính xác suất trên sáu tin, so sánh alpha = 0 và alpha = 1. |
+| Cell 5 — Mục 6.2 | So sánh GaussianNB với Logistic Regression, đọc tham số và dự đoán sinh viên mới. |
+
+## Phần bài tập
+
+Mở [BaiTap3.ipynb](code/BaiTap3.ipynb). Đây là toàn bộ 6 bài tập ở mục 7 của tài liệu. Mỗi bài có một cell code và tiêu đề riêng.
+
+| Bài | Nội dung |
+| --- | --- |
+| Bài 1 | Tính hậu nghiệm ba nhóm sinh viên và kiểm tra tổng bằng 1. |
+| Bài 2 | Tìm 5 từ nghiêng mạnh nhất về mỗi lớp bằng hiệu `feature_log_prob_`. |
+| Bài 3 | Thử alpha = 0.001, 0.1, 1, 10, 100 và nhận xét các số đo. |
+| Bài 4 | Tự đếm từ, làm trơn, tính tổng log và so với MultinomialNB. |
+| Bài 5 | Thử MultinomialNB trên số liệu liên tục, so với GaussianNB và giải thích. |
+| Bài 6 | Giữ 180 tin thường và 20 tin rác đầu tiên; phân tích accuracy, recall và tiên nghiệm. |
 
 ## Cấu trúc thư mục
 
 ```text
 03. Naive_Bayes/
 ├── code/
-│   ├── Lab3_NguyenDinhHuy.ipynb  # 5 cell code thực hành
-│   └── BaiTap3.ipynb             # 6 cell code bài tập mục 7
-├── data/                # tin_nhan.csv và sinh_vien.csv
-├── figures/             # 5 hình PNG được tạo khi chạy
-├── outputs/             # 2 tệp TXT, chia kết quả theo tiêu đề từng mục
+│   ├── Lab3_NguyenDinhHuy.ipynb
+│   └── BaiTap3.ipynb
+├── data/                # Dữ liệu CSV
+├── figures/             # Biểu đồ PNG
+├── outputs/             # Kết quả dạng chữ của từng notebook
 ├── scripts/
-│   └── run_all.py
+│   └── run_all.py        # Chạy toàn bộ notebook
 ├── requirements.txt
 └── README.md
 ```
 
-Tên thư mục gốc có thể khác trên máy cá nhân (ví dụ `03. Navie Bayes`); mã không phụ thuộc tên này. Giữ nguyên `code/`, `data/` và `scripts/` trong cùng thư mục bài.
+Giữ nguyên `code/`, `data/`, `scripts/` và `requirements.txt` trong cùng thư mục bài khi tải ZIP, clone hoặc di chuyển dự án. `figures/` và `outputs/` được tạo hoặc cập nhật khi chạy.
 
 ## Cài đặt và chạy toàn bộ
 
-Mở terminal tại thư mục Lab 3, cài thư viện và chạy:
+Mở terminal tại thư mục `03. Naive_Bayes`, chạy:
 
 ```sh
 python -m pip install -r requirements.txt
 python scripts/run_all.py
 ```
 
-`run_all.py` tự tìm thư mục bài từ vị trí của script, nên cũng có thể gọi bằng đường dẫn đầy đủ từ thư mục khác. Script chạy `Lab3_NguyenDinhHuy.ipynb` trước rồi `BaiTap3.ipynb`, mỗi notebook có kernel riêng sử dụng đúng Python đang chạy script.
+Script chạy notebook thực hành trước, sau đó notebook bài tập. Mỗi notebook dùng kernel riêng với đúng Python đang chạy script. Có thể gọi script bằng đường dẫn đầy đủ từ thư mục khác; script tự tìm thư mục bài từ vị trí của chính nó.
 
-Khi thành công, script cập nhật kết quả trong notebook và ghi bản chữ vào `outputs/<tên_notebook>.txt`. Hình được lưu bằng `savefig(..., dpi=150)` trước `show()`. Nếu gặp lỗi, script dừng, ghi lỗi vào nhật ký và không ghi đè notebook đang lỗi. Mỗi cell có thời gian chạy tối đa 300 giây.
+Kết quả được cập nhật trong notebook và xuất thành các tệp `.txt` ở `outputs/`; hình được lưu vào `figures/`. Mỗi lần chạy thay thế nhật ký cũ. Mỗi cell có tối đa 300 giây; nếu gặp lỗi, script dừng và không ghi đè notebook đang lỗi. Xem thông báo terminal và nhật ký trong `outputs/` để kiểm tra.
 
-## Chạy từng notebook hoặc chạy trên Colab
+## Chạy từng notebook và Google Colab
 
-Mở notebook trong VS Code hoặc khởi động Jupyter từ thư mục Lab 3:
+Mở notebook bằng VS Code hoặc khởi động Jupyter từ thư mục bài:
 
 ```sh
 python -m notebook
 ```
 
-Chọn kernel đã cài thư viện và bấm **Run All** trong notebook cần chạy. Không cần chạy notebook khác trước.
+Chọn kernel đã cài thư viện, mở notebook trong `code/` và chọn **Run All**. Mã tìm dữ liệu từ thư mục bài hoặc `code/` mà không phụ thuộc tên thư mục gốc; bản trên máy có thể dùng tên `03. Navie Bayes`.
 
-Trên Colab, tải `tin_nhan.csv` và `sinh_vien.csv` vào Files (thường là `/content`) hoặc thư mục `data/`, rồi chạy notebook. Các hình được lưu trong `figures/`. Để xuất toàn bộ nhật ký TXT trên Colab, tải đủ dự án và chạy `scripts/run_all.py` từ thư mục bài. Nếu chỉnh sửa trên Colab rồi muốn chạy trên máy, tải notebook mới về đúng `code/` trước khi chạy script; script không tự đồng bộ với Colab.
+**Trên Colab:** Tải `tin_nhan.csv` và `sinh_vien.csv` trực tiếp vào Files hoặc thư mục `data/`. Các hình được lưu trong `figures/`.
 
-## Hình minh họa
+Để xuất nhật ký `.txt` trên Colab, tải đủ thư mục bài và chuyển tới thư mục chứa `requirements.txt`, rồi chạy:
 
-- [Ma trận nhầm lẫn bộ lọc](figures/d3_ma_tran_nham_lan.png).
-- [Làm trơn Laplace](figures/d4_lam_tron_laplace.png).
-- [Hai phân phối Gaussian](figures/d5_duong_chuong.png).
-- [Biên quyết định GaussianNB và Logistic Regression](figures/d5_bien_quyet_dinh.png).
-- [Các từ phân biệt hai lớp mạnh nhất](figures/bai2_tu_to_cao.png).
+```python
+%pip install -r requirements.txt
+!python scripts/run_all.py
+```
 
-## Đối chiếu với tài liệu
+Chỉ bấm **Run All** trong notebook sẽ hiển thị kết quả trong notebook; `run_all.py` mới xuất nhật ký vào `outputs/`. Sau khi chỉnh sửa trên Colab, tải tệp `.ipynb` về đúng vị trí trong `code/` trước khi chạy script trên máy. Script không tự đồng bộ với Colab.
+
+## Kết quả và hình ảnh
+
+| Tệp | Nội dung |
+| --- | --- |
+| [Lab3_NguyenDinhHuy.txt](outputs/Lab3_NguyenDinhHuy.txt) | Kết quả phần thực hành. |
+| [BaiTap3.txt](outputs/BaiTap3.txt) | Kết quả phần bài tập. |
+| [d3_ma_tran_nham_lan.png](figures/d3_ma_tran_nham_lan.png) | Ma trận nhầm lẫn bộ lọc thư rác. |
+| [d4_lam_tron_laplace.png](figures/d4_lam_tron_laplace.png) | Ảnh hưởng của làm trơn Laplace. |
+| [d5_duong_chuong.png](figures/d5_duong_chuong.png) | Hai phân phối Gaussian của giờ ôn theo lớp. |
+| [d5_bien_quyet_dinh.png](figures/d5_bien_quyet_dinh.png) | Biên quyết định GaussianNB và Logistic Regression. |
+| [bai2_tu_to_cao.png](figures/bai2_tu_to_cao.png) | Các từ phân biệt hai lớp mạnh nhất. |
+
+Kết quả chạy và biểu đồ cũng được lưu trong notebook. Mã xuất hình gọi `savefig` trước `show` để lưu đúng hình đang vẽ.
+
+## Đối chiếu kết quả
 
 Các bài có chia dữ liệu dùng `test_size=0.25`, `random_state=17`, `stratify=y`; bộ lọc chuẩn dùng `alpha=1.0`. Các cell thực hành và bài 3/6 giữ thứ tự vector hóa toàn bộ rồi chia như mã mẫu. Với một dự án thực tế, nên chia văn bản trước và chỉ học từ điển trên tập học; bài tập 4 thực hiện cách này cho cả bộ lọc tự viết lẫn mô hình đối chiếu.
 
