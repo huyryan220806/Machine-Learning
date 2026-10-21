@@ -1,0 +1,71 @@
+--- Bài 1. Tự viết KNN không dùng thư viện ---
+Accuracy tự viết: 0.9200
+Accuracy scikit-learn: 0.9200
+Số nhãn dự đoán khác nhau: 0
+Giải thích: Hàm tính khoảng cách tới từng mẫu học, chọn 13 mẫu gần nhất rồi trả về nhãn có nhiều phiếu nhất. Đây cũng là quy tắc của KNeighborsClassifier với khoảng cách Euclid và trọng số đều, nên kết quả trên cùng dữ liệu khớp nhau.
+k = 13 là số lẻ nên hai lớp không hòa phiếu; nhãn và đặc trưng phải luôn giữ cùng thứ tự sau khi chia dữ liệu.
+
+--- Bài 2. Khoảng cách Manhattan ---
+Khoảng cách    k tốt nhất    Accuracy CV    Accuracy kiểm tra
+euclidean        13          0.8667         0.9200
+manhattan        27          0.8667         0.9067
+Nhận xét: Manhattan đổi accuracy kiểm tra -1.33 điểm phần trăm so với Euclid trên lần chia này; k được chọn lần lượt là 27 và 13.
+Đổi cách đo có thể đổi thứ tự láng giềng và k tối ưu. Chênh lệch trên một tập kiểm tra nhỏ không đủ kết luận một khoảng cách luôn tốt hơn.
+
+--- Bài 3. Đổi đơn vị đo ---
+Đơn vị chi tiêu    Không chuẩn hóa    Có chuẩn hóa
+Nghìn đồng          0.5333             0.8667
+Triệu đồng          0.8667             0.8667
+Accuracy chưa chuẩn hóa thay đổi +33.33 điểm phần trăm so với đơn vị nghìn đồng (mốc tài liệu 0.5333).
+Số dự đoán chuẩn hóa khác nhau sau đổi đơn vị: 0
+Giải thích: Khoảng cách Euclid cộng bình phương chênh lệch của từng cột. Chia chi tiêu cho 1000 làm đóng góp bình phương của cột này giảm một triệu lần, nên có thể đổi láng giềng dù thông tin không đổi.
+Khi chuẩn hóa z, cả giá trị, trung bình và độ lệch chuẩn cùng chia cho 1000 nên tỷ số z giữ nguyên (ngoại trừ sai số số thực). Vì vậy đổi đơn vị không làm đổi dự đoán trong phép thử này.
+
+--- Bài 4. Láng giềng có trọng số ---
+  k    Trọng số       Accuracy học    Accuracy kiểm tra
+  1    uniform        1.0000          0.8000
+  1    distance       1.0000          0.8000
+ 13    uniform        0.8844          0.9200
+ 13    distance       1.0000          0.9333
+101    uniform        0.8311          0.8533
+101    distance       1.0000          0.9067
+Với k=101, trọng số khoảng cách đổi accuracy kiểm tra +5.33 điểm phần trăm so với trọng số đều.
+Giải thích: Láng giềng gần có phiếu nặng hơn theo nghịch đảo khoảng cách, làm giảm ảnh hưởng của nhiều điểm xa và giữ tính cục bộ khi k lớn. Mức cải thiện phải dựa trên kết quả kiểm tra, không được suy từ accuracy tập học.
+Với k=1, chỉ một láng giềng bỏ phiếu nên đổi trọng số không đổi nhãn. Accuracy học rất cao khi dùng distance còn do mẫu học có khoảng cách 0 tới chính nó.
+
+--- Bài 5. Chọn k cho hồi quy ---
+ k    MAE CV (tỷ đồng)
+ 1       0.4164
+ 2       0.3498
+ 3       0.3714
+ 4       0.3618
+ 5       0.3816
+ 6       0.4002
+ 7       0.3990
+ 8       0.4098
+ 9       0.4171
+10       0.4365
+11       0.4500
+12       0.4695
+13       0.4992
+14       0.5153
+15       0.5290
+16       0.5595
+17       0.5748
+18       0.5891
+19       0.6130
+20       0.6254
+k tốt nhất theo CV = 2; MAE CV = 0.3498
+MAE KNN trên tập kiểm tra = 0.4867 tỷ đồng
+MAE đường thẳng trên tập kiểm tra = 0.2578 tỷ đồng
+Nhận xét: KNN sau chọn k có MAE không thấp hơn đường thẳng trong lần chia này. MAE càng nhỏ càng tốt; quan hệ giá–diện tích gần tuyến tính giúp đường thẳng tận dụng xu hướng chung.
+scikit-learn trả về MAE âm để điểm lớn hơn là tốt hơn; đổi dấu rồi chọn MAE nhỏ nhất. Chỉ dùng tập học để chọn k, tập kiểm tra dùng để đánh giá mô hình đã chọn.
+
+--- Bài 6. Đo thời gian dự đoán ---
+ so_mau_hoc  fit_giay  predict_1000_giay
+       1000  0.001157           0.003974
+      10000  0.005946           0.004426
+     100000  0.074502           0.005504
+Giải thích: KNN là học lười vì chủ yếu lưu các mẫu học; khi dự đoán mới tìm láng giềng và bỏ phiếu. Khi số mẫu tăng, việc lưu hoặc lập chỉ mục và tìm láng giềng có thể tốn thêm thời gian.
+Ở dữ liệu 2 chiều, algorithm='auto' có thể dùng cây tìm kiếm để tăng tốc, nên fit không chỉ là sao chép dữ liệu và thời gian predict không nhất thiết tăng tuyến tính. Một lần đo có thể dao động do máy; so sánh tương đối, không xem số giây là hằng số của thuật toán.
+[Biểu đồ hiển thị trong notebook]

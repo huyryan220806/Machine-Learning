@@ -17,6 +17,7 @@ Repository lưu mã nguồn, dữ liệu và kết quả các bài thực hành 
 | 01 | Hồi quy tuyến tính: phân tích dữ liệu giá nhà, bình phương tối thiểu, đánh giá mô hình, gradient descent và hồi quy nhiều biến. | [Bài 01 — Hồi quy tuyến tính](01.%20Linear_Regression/README.md) |
 | 02 | Logistic Regression: sigmoid, phân loại sinh viên, confusion matrix, các thước đo đánh giá, ngưỡng phân loại và mô hình nhiều biến. | [Bài 02 — Logistic Regression](02.%20Logistic_Regression/README.md) |
 | 03 | Naive Bayes: định lý Bayes, túi từ, lọc thư rác, làm trơn Laplace, GaussianNB và 6 bài tập mục 7. | [Bài 03 — Naive Bayes](03.%20Naive_Bayes/README.md) |
+| 04 | KNN: khoảng cách, chuẩn hóa, chọn k bằng kiểm định chéo, so sánh mô hình, hồi quy và 6 bài tập mục 7. | [Bài 04 — KNN](04.%20KNN/README.md) |
 
 ## Cấu trúc repository
 
@@ -47,6 +48,15 @@ Machine-Learning/
 │   ├── outputs/              # Kết quả TXT của từng notebook
 │   ├── scripts/
 │   │   └── run_all.py        # Chạy 2 notebook của bài 03
+│   ├── requirements.txt
+│   └── README.md
+├── 04. KNN/
+│   ├── code/                 # 2 notebook: thực hành (5 cell) và bài tập (6 cell)
+│   ├── data/                 # Sinh viên mở rộng, hai vầng trăng, giá nhà
+│   ├── figures/              # 7 hình minh họa PNG
+│   ├── outputs/              # Kết quả TXT của hai notebook
+│   ├── scripts/
+│   │   └── run_all.py        # Chạy toàn bộ Lab 4
 │   ├── requirements.txt
 │   └── README.md
 ├── .gitignore
@@ -123,3 +133,20 @@ python scripts/run_all.py
 - [Dữ liệu tin nhắn](03.%20Naive_Bayes/data/tin_nhan.csv) và [dữ liệu sinh viên](03.%20Naive_Bayes/data/sinh_vien.csv).
 - [Hình minh họa](03.%20Naive_Bayes/figures/) và [kết quả chạy](03.%20Naive_Bayes/outputs/).
 - [README Lab 3: từng bài, cách chạy và đối chiếu kết quả](03.%20Naive_Bayes/README.md).
+
+## Tải và chạy bài 04
+
+Từ thư mục chứa repository, chạy:
+
+```sh
+cd "Machine-Learning/04. KNN"
+python -m pip install -r requirements.txt
+python scripts/run_all.py
+```
+
+Notebook thực hành có 5 cell code, notebook bài tập mục 7 có 6 cell code. Script chạy thực hành trước rồi bài tập, cập nhật kết quả trong notebook, xuất nhật ký vào `outputs/` và hình vào `figures/`. Thư mục ảnh đề `Lab04_KNN/` chỉ lưu trên máy và không đưa lên GitHub.
+
+- [Notebook thực hành](04.%20KNN/code/Lab4_NguyenDinhHuy.ipynb) và [notebook bài tập mục 7](04.%20KNN/code/BaiTap4.ipynb).
+- [Ba bộ dữ liệu](04.%20KNN/data/).
+- [Hình minh họa](04.%20KNN/figures/) và [kết quả chạy](04.%20KNN/outputs/).
+- [README Lab 4: từng bài, cách chạy và đối chiếu kết quả](04.%20KNN/README.md).
