@@ -1,0 +1,106 @@
+--- Bài tập 1 — Tự vẽ cây ---
+[Biểu đồ hiển thị trong notebook]
+Đã lưu figures/cay_nam_la.png: độ sâu 3, số lá 5.
+[Biểu đồ hiển thị trong notebook]
+Đã lưu figures/cay_sau_2.png: độ sâu 2, số lá 4.
+Lá trái 1: lớp 0, Gini = 0.4923, số khách = 121.
+Lá trái 2: lớp 0, Gini = 0.1948, số khách = 128.
+Gini tại nút trước khi chia: 0.3933; sau chia: 0.3394.
+Hai lá bên trái cùng kết luận trễ hạn (lớp 0), nhưng tỷ lệ hai lớp khác nhau.
+Cây vẫn chia vì Gini trung bình có trọng số giảm; mục tiêu của phép chia là làm các nút thuần hơn, không bắt buộc đổi nhãn dự đoán.
+
+--- Bài tập 2 — Tự tìm câu hỏi gốc trên dữ liệu thật ---
+Số khách dùng để tìm câu hỏi: 450
+Câu hỏi tốt nhất: thu_nhap <= 15.05
+Gini gốc = 0.499842; sau chia = 0.377697; giảm = 0.122145
+scikit-learn: thu_nhap <= 15.05
+Kết quả khớp câu hỏi gốc của cây: thu nhập với ngưỡng 15.05 triệu đồng.
+Chỉ cần thử trung điểm các giá trị liên tiếp vì mọi ngưỡng trong cùng khoảng tạo ra cùng hai nhóm.
+Chọn câu hỏi làm Gini giảm nhiều nhất, có tính trọng số số khách ở hai nhánh; không dùng tập kiểm tra để chọn câu hỏi.
+
+--- Bài tập 3 — Gini hay entropy ---
+Cây tự do (gini): sâu 13, 92 lá; accuracy học 1.0000, kiểm tra 0.7667
+Độ sâu   Accuracy học   CV 5 phần
+     1   0.7467         0.7244
+     2   0.7711         0.7378
+     3   0.8000         0.7511
+     4   0.8644         0.8089
+     5   0.8978         0.8333
+     6   0.9133         0.8156
+     7   0.9400         0.8067
+     8   0.9600         0.7733
+     9   0.9800         0.7800
+    10   0.9911         0.7822
+    11   0.9933         0.7756
+    12   0.9978         0.7778
+    13   1.0000         0.7733
+    14   1.0000         0.7733
+    15   1.0000         0.7733
+Chọn gini: độ sâu 5, CV 0.8333, accuracy kiểm tra 0.8533.
+
+Cây tự do (entropy): sâu 13, 88 lá; accuracy học 1.0000, kiểm tra 0.7667
+Độ sâu   Accuracy học   CV 5 phần
+     1   0.7467         0.7244
+     2   0.7711         0.7133
+     3   0.7733         0.7489
+     4   0.8511         0.8111
+     5   0.8956         0.8222
+     6   0.9111         0.8222
+     7   0.9378         0.8089
+     8   0.9533         0.7933
+     9   0.9778         0.7844
+    10   0.9867         0.7978
+    11   0.9933         0.7911
+    12   0.9978         0.7822
+    13   1.0000         0.7822
+    14   1.0000         0.7822
+    15   1.0000         0.7867
+Chọn entropy: độ sâu 5, CV 0.8222, accuracy kiểm tra 0.8467.
+
+Entropy chênh -0.67 điểm phần trăm accuracy so với Gini trên cùng tập kiểm tra.
+Ở lần chia này, đổi sang entropy làm kết quả khác rất ít: cả hai chọn độ sâu 5, entropy dự đoán đúng ít hơn Gini 1 trong 150 khách kiểm tra.
+Nếu nhiều độ sâu có cùng điểm CV cao nhất, chọn độ sâu xuất hiện đầu tiên trong dãy tăng dần, giống cách dùng max trong tài liệu.
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài tập 4 — Cắt tỉa bằng số khách tối thiểu ở lá ---
+min_samples_leaf   CV 5 phần
+               1   0.7733
+               2   0.7822
+               5   0.8067
+              10   0.8089
+              20   0.8089
+              40   0.7133
+Chọn min_samples_leaf = 10, CV = 0.8089.
+Cây được chọn: độ sâu 8, số lá 30.
+Accuracy kiểm tra của cây giới hạn số khách ở lá: 0.8467
+Accuracy kiểm tra của cây sâu 5: 0.8533
+Trên bộ dữ liệu và lần chia này, giới hạn độ sâu 5 cho accuracy cao hơn giới hạn số khách tối thiểu ở lá.
+Giới hạn kích thước lá tránh những quyết định chỉ dựa trên rất ít khách, còn giới hạn độ sâu chặn số lần hỏi liên tiếp.
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài tập 5 — Độ quan trọng bằng cách xáo trộn ---
+Độ quan trọng của năm cột (sắp theo permutation mean):
+                       MDI  Permutation mean  Permutation std
+thu_nhap            0.4269            0.3073           0.0242
+ty_le_no            0.2696            0.1993           0.0357
+co_viec_on_dinh     0.0773            0.1117           0.0155
+so_nguoi_phu_thuoc  0.0764            0.0497           0.0199
+so_ngau_nhien       0.1499            0.0017           0.0111
+Cột ngẫu nhiên: hạng 3/5 theo feature_importances_, hạng 5/5 theo permutation importance.
+Xáo trộn cột ngẫu nhiên làm accuracy giảm trung bình 0.0017.
+feature_importances_ cộng mức giảm độ hỗn tạp trên tập học, nên cột có nhiều giá trị khác nhau có nhiều cơ hội tách tình cờ và được điểm cao.
+Permutation importance đo mức giảm accuracy trên tập kiểm tra khi xáo trộn một cột. Cột ngẫu nhiên không chứa tín hiệu dự đoán ổn định nên mức giảm nhỏ, có thể bằng 0 hoặc âm do dao động mẫu.
+Độ quan trọng phản ánh cách mô hình sử dụng dữ liệu, không chứng minh quan hệ nhân quả.
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài tập 6 — Rừng cho bài toán hồi quy ---
+Mô hình          MAE kiểm tra (tỷ đồng)   Giá 250 m² (tỷ đồng)
+Cây sâu 3        0.5039                    9.4025
+Đường thẳng      0.2578                    19.9139
+Rừng 200 cây     0.4559                    9.1973
+Mô hình có MAE thấp nhất trong so sánh: Đường thẳng.
+Rừng giảm MAE so với cây sâu 3 (0.4559 so với 0.5039 tỷ đồng), nhưng vẫn kém đường thẳng (0.2578 tỷ đồng) trên tập kiểm tra này.
+Rừng dự đoán 150 m²: 9.1973; 250 m²: 9.1973 tỷ đồng.
+Rừng không ngoại suy tiếp xu hướng tăng: mỗi cây trả trung bình giá các mẫu học ở lá, rồi rừng lấy trung bình dự đoán của các cây.
+Các diện tích lớn hơn mọi mẫu học đều đi vào lá ngoài cùng của từng cây, nên giá dự đoán giữ nguyên thay vì tăng theo diện tích.
+[Biểu đồ hiển thị trong notebook]

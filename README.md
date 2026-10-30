@@ -18,6 +18,7 @@ Repository lưu mã nguồn, dữ liệu và kết quả các bài thực hành 
 | 02 | Logistic Regression: sigmoid, phân loại sinh viên, confusion matrix, các thước đo đánh giá, ngưỡng phân loại và mô hình nhiều biến. | [Bài 02 — Logistic Regression](02.%20Logistic_Regression/README.md) |
 | 03 | Naive Bayes: định lý Bayes, túi từ, lọc thư rác, làm trơn Laplace, GaussianNB và 6 bài tập mục 7. | [Bài 03 — Naive Bayes](03.%20Naive_Bayes/README.md) |
 | 04 | KNN: khoảng cách, chuẩn hóa, chọn k bằng kiểm định chéo, so sánh mô hình, hồi quy và 6 bài tập mục 7. | [Bài 04 — KNN](04.%20KNN/README.md) |
+| 05 | Decision Tree và Random Forest: Gini, chọn độ sâu, độ quan trọng của biến, hồi quy và 6 bài tập mục 9. | [Bài 05 — Cây quyết định và Rừng ngẫu nhiên](05.%20DecisionTree_RandomForest/README.md) |
 
 ## Cấu trúc repository
 
@@ -57,6 +58,15 @@ Machine-Learning/
 │   ├── outputs/              # Kết quả TXT của hai notebook
 │   ├── scripts/
 │   │   └── run_all.py        # Chạy toàn bộ Lab 4
+│   ├── requirements.txt
+│   └── README.md
+├── 05. DecisionTree_RandomForest/
+│   ├── code/                 # 2 notebook: thực hành (7 cell) và bài tập (6 cell)
+│   ├── data/                 # Khách vay và giá nhà
+│   ├── figures/              # 11 biểu đồ PNG
+│   ├── outputs/              # Kết quả TXT của hai notebook
+│   ├── scripts/
+│   │   └── run_all.py        # Chạy toàn bộ Lab 5
 │   ├── requirements.txt
 │   └── README.md
 ├── .gitignore
@@ -150,3 +160,20 @@ Notebook thực hành có 5 cell code, notebook bài tập mục 7 có 6 cell co
 - [Ba bộ dữ liệu](04.%20KNN/data/).
 - [Hình minh họa](04.%20KNN/figures/) và [kết quả chạy](04.%20KNN/outputs/).
 - [README Lab 4: từng bài, cách chạy và đối chiếu kết quả](04.%20KNN/README.md).
+
+## Tải và chạy bài 05
+
+Từ thư mục chứa repository, chạy:
+
+```sh
+cd "Machine-Learning/05. DecisionTree_RandomForest"
+python -m pip install -r requirements.txt
+python scripts/run_all.py
+```
+
+Notebook thực hành có 7 cell code, notebook bài tập mục 9 có 6 cell code. Mỗi mục/bài có tiêu đề và một cell code. Script chạy thực hành trước rồi bài tập, cập nhật notebook, xuất nhật ký vào `outputs/` và lưu 11 biểu đồ vào `figures/`. Thư mục ảnh đề `Lab5_DT_RF/` chỉ lưu trên máy và không đưa lên GitHub.
+
+- [Notebook thực hành](05.%20DecisionTree_RandomForest/code/Lab5_NguyenDinhHuy.ipynb) và [notebook bài tập mục 9](05.%20DecisionTree_RandomForest/code/BaiTap5.ipynb).
+- [Dữ liệu khách vay](05.%20DecisionTree_RandomForest/data/khach_vay.csv) và [dữ liệu giá nhà](05.%20DecisionTree_RandomForest/data/gia_nha.csv).
+- [Hình minh họa](05.%20DecisionTree_RandomForest/figures/) và [kết quả chạy](05.%20DecisionTree_RandomForest/outputs/).
+- [README Lab 5: từng bài, cách chạy và đối chiếu kết quả](05.%20DecisionTree_RandomForest/README.md).
