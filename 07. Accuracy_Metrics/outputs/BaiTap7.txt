@@ -1,0 +1,92 @@
+--- Bài tập 1 — Tự viết hàm đánh giá ---
+Thứ tự: accuracy, precision, recall, F1
+Logistic — NumPy:      0.9467, 0.8500, 0.5667, 0.6800
+Logistic — thư viện:   0.9467, 0.8500, 0.5667, 0.6800
+Mô hình lười — NumPy:      0.9000, 0.0000, 0.0000, 0.0000
+Mô hình lười — thư viện:   0.9000, 0.0000, 0.0000, 0.0000
+Mô hình lười không đoán ai bỏ học, nên TP+FP=0 và precision theo công thức không xác định (0/0).
+Hàm quy ước precision bằng 0 khi mẫu số bằng 0, giống zero_division=0; đây là quy ước xử lý, không phải phép chia 0/0 có giá trị 0.
+Recall hoặc F1 có mẫu số 0 cũng được xử lý tương tự. Accuracy 0.9 của mô hình lười vẫn đi cùng recall 0 vì bỏ sót toàn bộ lớp dương.
+
+--- Bài tập 2 — Đánh giá từng chữ số viết tay ---
+              precision    recall  f1-score   support
+
+           0     1.0000    1.0000    1.0000        45
+           1     0.9787    1.0000    0.9892        46
+           2     1.0000    1.0000    1.0000        44
+           3     0.9787    1.0000    0.9892        46
+           4     1.0000    0.9778    0.9888        45
+           5     1.0000    1.0000    1.0000        46
+           6     1.0000    1.0000    1.0000        45
+           7     1.0000    0.9778    0.9888        45
+           8     0.9767    0.9767    0.9767        43
+           9     0.9778    0.9778    0.9778        45
+
+    accuracy                         0.9911       450
+   macro avg     0.9912    0.9910    0.9911       450
+weighted avg     0.9912    0.9911    0.9911       450
+
+Recall thấp nhất: chữ số 8, giá trị 0.9767.
+Precision thấp nhất: chữ số 8, giá trị 0.9767.
+Số ảnh mỗi lớp trong tập kiểm tra: từ 43 đến 46.
+Macro avg cho mỗi lớp trọng số bằng nhau; weighted avg lấy trọng số theo số ảnh. Số ảnh của 10 lớp gần bằng nhau nên hai trung bình gần như bằng nhau.
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài tập 3 — Chọn ngưỡng để recall ít nhất 80% ---
+Ngưỡng lớn nhất có recall OOF >= 0.8: 0.171773644908
+Recall OOF tại ngưỡng này: 0.8090
+Số ca bỏ học phát hiện trên tập học ngoài fold: 72/89
+Nếu chỉ xét lưới bước 0.05 của mục 5, ngưỡng lớn nhất là 0.15.
+Tập kiểm tra: recall = 0.8000, precision = 0.5106, số bạn bị báo = 47.
+Recall kiểm tra đạt 0.8: True
+Ngưỡng được chọn hoàn toàn từ dự đoán ngoài fold trên tập học. Điều kiện recall OOF >= 0.8 không bảo đảm mọi tập dữ liệu mới đều đạt 0.8; không sửa lại ngưỡng sau khi xem kết quả kiểm tra.
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài tập 4 — Tự vẽ đường ROC ---
+Logistic: AUC = 0.9449
+Rừng 200 cây: AUC = 0.9249
+[Biểu đồ hiển thị trong notebook]
+Xét tổng thể bằng AUC, Logistic ôm góc trên trái tốt hơn; AUC cao hơn không có nghĩa luôn cao hơn ở mọi FPR.
+Hai đường có đổi vị trí cao/thấp (cắt nhau): True
+Ví dụ Logistic cao hơn ở đoạn FPR (0.0000, 0.0037).
+Ví dụ Rừng cao hơn ở đoạn FPR (0.0037, 0.0074).
+Chọn mô hình và ngưỡng còn phụ thuộc mức báo nhầm chấp nhận được, không chỉ nhìn một con số AUC.
+
+--- Bài tập 5 — Cân bằng lớp cho rừng và SVM ---
+So sánh chính — dùng predict như mục 7:
+      mo_hinh class_weight  precision  recall     F1
+Random Forest         None     0.7727  0.5667 0.6538
+Random Forest     balanced     0.7500  0.4000 0.5217
+      SVM RBF         None     0.8824  0.5000 0.6383
+      SVM RBF     balanced     0.4464  0.8333 0.5814
+Random Forest, balanced - thường: precision -0.0227, recall -0.1667, F1 -0.1321.
+SVM RBF, balanced - thường: precision -0.4359, recall +0.3333, F1 -0.0569.
+Xét độ thay đổi tuyệt đối của recall, SVM RBF thay đổi nhiều nhất.
+Cân bằng lớp thay đổi mức phạt lúc học, không bảo đảm mọi thước đo đều tăng. Trong lần chia này SVM tăng recall nhưng giảm precision; rừng lại giảm recall.
+Bảng bổ sung — dùng predict_proba >= 0.5 như mục 6:
+      mo_hinh class_weight  precision  recall     F1
+Random Forest         None     0.7727  0.5667 0.6538
+Random Forest     balanced     0.7647  0.4333 0.5532
+      SVM RBF         None     0.8333  0.5000 0.6250
+      SVM RBF     balanced     0.8125  0.4333 0.5652
+predict của SVM dùng ranh giới quyết định; xác suất được hiệu chỉnh riêng nên ngưỡng 0.5 có thể cho nhãn khác. Rừng cũng có thể khác ở trường hợp xác suất đúng 0.5 vì cách xử lý hòa.
+Vì vậy kết luận thay đổi nhiều nhất ở trên áp dụng cho bảng predict; cần giữ cùng quy tắc quyết định khi so sánh.
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài tập 6 — MAE, RMSE và một dự đoán hỏng ---
+Căn sửa dự đoán: chỉ số dữ liệu 0, diện tích 35.5 m².
+Giá thật 3.0000; dự đoán ban đầu 3.2179; sau cộng 5 tỷ 8.2179.
+MAE, RMSE có đơn vị tỷ đồng; R² không có đơn vị:
+                        MAE      RMSE        R2
+truong_hop
+Ban đầu            0.257784  0.373041  0.962229
+Một dự đoán +5 tỷ  0.674451  1.550516  0.347467
+Thay đổi sau - trước:
+MAE     0.416667
+RMSE    1.177475
+R2     -0.614761
+MAE tăng 2.62 lần; RMSE tăng 4.16 lần.
+Nếu chỉ xét độ lớn thay đổi số học của ba con số, RMSE thay đổi nhiều nhất trong lần thử này.
+So hai sai số cùng đơn vị, RMSE tăng mạnh hơn MAE: RMSE bình phương sai số trước khi lấy trung bình rồi căn bậc hai, nên sai số lớn có trọng số ảnh hưởng mạnh hơn.
+R² giảm vì tổng bình phương sai số tăng; không nên so trực tiếp độ lớn R² với MAE/RMSE vì khác đơn vị và ý nghĩa.
+[Biểu đồ hiển thị trong notebook]

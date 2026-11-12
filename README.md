@@ -20,6 +20,7 @@ Repository lưu mã nguồn, dữ liệu và kết quả các bài thực hành 
 | 04 | KNN: khoảng cách, chuẩn hóa, chọn k bằng kiểm định chéo, so sánh mô hình, hồi quy và 6 bài tập mục 7. | [Bài 04 — KNN](04.%20KNN/README.md) |
 | 05 | Decision Tree và Random Forest: Gini, chọn độ sâu, độ quan trọng của biến, hồi quy và 6 bài tập mục 9. | [Bài 05 — Cây quyết định và Rừng ngẫu nhiên](05.%20DecisionTree_RandomForest/README.md) |
 | 06 | SVM: lề rộng nhất, chuẩn hóa, kernel, dò C/gamma, chữ số viết tay và 6 bài tập mục 7. | [Bài 06 — SVM](06.%20SVM/README.md) |
+| 07 | Đánh giá mô hình: accuracy, precision/recall/F1, ROC/AUC, chọn ngưỡng, cân bằng lớp và 6 bài tập mục 8. | [Bài 07 — Đánh giá mô hình](07.%20Accuracy_Metrics/README.md) |
 
 ## Cấu trúc repository
 
@@ -77,6 +78,15 @@ Machine-Learning/
 │   ├── outputs/              # Kết quả TXT của hai notebook
 │   ├── scripts/
 │   │   └── run_all.py        # Chạy toàn bộ Lab 6
+│   ├── requirements.txt
+│   └── README.md
+├── 07. Accuracy_Metrics/
+│   ├── code/                 # 2 notebook: thực hành (6 cell) và bài tập (6 cell)
+│   ├── data/                 # Sinh viên bỏ học và giá nhà
+│   ├── figures/              # 10 hình đánh giá mô hình
+│   ├── outputs/              # Kết quả TXT của hai notebook
+│   ├── scripts/
+│   │   └── run_all.py        # Chạy toàn bộ Lab 7
 │   ├── requirements.txt
 │   └── README.md
 ├── .gitignore
@@ -204,3 +214,20 @@ Notebook thực hành có 5 cell code, notebook bài tập mục 7 có 6 cell co
 - [Ba bộ dữ liệu CSV](06.%20SVM/data/); bộ chữ số được nạp bằng `load_digits()` có sẵn trong scikit-learn.
 - [Hình minh họa và ảnh chữ số sai](06.%20SVM/figures/), [kết quả chạy](06.%20SVM/outputs/).
 - [README Lab 6: từng bài, cách chạy và đối chiếu kết quả](06.%20SVM/README.md).
+
+## Tải và chạy bài 07
+
+Từ thư mục chứa repository, chạy:
+
+```sh
+cd "Machine-Learning/07. Accuracy_Metrics"
+python -m pip install -r requirements.txt
+python scripts/run_all.py
+```
+
+Hai notebook gồm 6 cell thực hành và 6 cell bài tập mục 8; mỗi mục/bài có tiêu đề. Script cập nhật notebook, xuất nhật ký vào `outputs/` và lưu 10 hình vào `figures/`. Phần chọn ngưỡng sử dụng dự đoán ngoài fold trên tập học. Thư mục đề `Lab7_Accuracy/` chỉ lưu trên máy.
+
+- [Notebook thực hành](07.%20Accuracy_Metrics/code/Lab7_NguyenDinhHuy.ipynb) và [notebook bài tập mục 8](07.%20Accuracy_Metrics/code/BaiTap7.ipynb).
+- [Dữ liệu sinh viên bỏ học](07.%20Accuracy_Metrics/data/sinh_vien_bo_hoc.csv) và [giá nhà](07.%20Accuracy_Metrics/data/gia_nha.csv).
+- [Hình đánh giá mô hình](07.%20Accuracy_Metrics/figures/) và [kết quả chạy](07.%20Accuracy_Metrics/outputs/).
+- [README Lab 7: từng bài, cách chạy và đối chiếu kết quả](07.%20Accuracy_Metrics/README.md).
