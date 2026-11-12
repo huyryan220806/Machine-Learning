@@ -1,0 +1,107 @@
+--- Bài tập 1 — Tính tay khoảng cách tới ranh giới ---
+w1 = -0.831357, w2 = -0.354868, b = 4.820361
+Độ rộng lề = 2.212565; nửa độ rộng lề = 1.106282
+Điểm [3.0, 3.0]: f(x) = +1.261684; khoảng cách = 1.395779
+Điểm [5.0, 4.5]: f(x) = -0.933333; khoảng cách = 1.032530
+Ba vectơ hỗ trợ:
+Điểm 18: f(x) = -1.000102; khoảng cách = 1.106396
+Điểm 10: f(x) = +0.999897; khoảng cách = 1.106169
+Điểm 13: f(x) = +1.000205; khoảng cách = 1.106509
+Ba vectơ hỗ trợ của bộ dữ liệu tách được này nằm trên hai mép f(x)=±1. Vì vậy khoảng cách tới f(x)=0 là 1/||w||, bằng một nửa độ rộng lề 2/||w||.
+Sai lệch rất nhỏ do dung sai tối ưu số. Dùng hệ số đầy đủ thay vì hệ số làm tròn ba chữ số giúp giảm sai số khi tự tính.
+
+--- Bài tập 2 — Thêm một điểm ---
+Ban đầu: w1 = -0.831357, w2 = -0.354868, b = 4.820361
+Thêm (-1.0, -1.0), lớp 1: w1 = -0.831357, w2 = -0.354868, b = 4.820361
+  Điểm mới là vectơ hỗ trợ: False; số vectơ hỗ trợ: 3.
+  Thay đổi ||w_mới - w_gốc|| = 0.000000; |b_mới - b_gốc| = 0.000000.
+Thêm (4.5, 4.0), lớp 1: w1 = -2.603014, w2 = -0.806843, b = 15.940939
+  Điểm mới là vectơ hỗ trợ: True; số vectơ hỗ trợ: 2.
+  Thay đổi ||w_mới - w_gốc|| = 1.828401; |b_mới - b_gốc| = 11.120578.
+Điểm (-1, -1) nằm xa ranh giới, ngoài lề phía lớp 1, nên không trở thành vectơ hỗ trợ và đường ranh giới gần như giữ nguyên.
+Điểm (4.5, 4) nằm gần ranh giới cũ và vi phạm lề của lớp 1; nó trở thành vectơ hỗ trợ, buộc đường ranh giới và độ rộng lề thay đổi.
+Chênh lệch nhỏ ở trường hợp điểm xa có thể do dung sai của bộ giải, không phải thay đổi đáng kể của nghiệm.
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài tập 3 — Kernel đa thức ---
+Bậc   C tốt nhất   CV 5 phần   Accuracy kiểm tra
+  2            1   0.5422      0.5067
+  3            1   0.8178      0.8267
+  4          100   0.5156      0.4800
+Bậc tốt nhất theo CV: 3, C = 1; accuracy kiểm tra = 0.8267.
+RBF của mục 5 trên cùng tập kiểm tra: 0.9200.
+Kernel đa thức được chọn chưa vượt RBF; tăng bậc không bảo đảm biên phù hợp với hai vầng trăng.
+StandardScaler nằm trong pipeline nên mỗi lượt CV chỉ học phép chuẩn hóa từ phần dữ liệu huấn luyện của lượt đó.
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài tập 4 — Dò lưới mịn ---
+Lưới thưa: {'C': 10, 'gamma': 1}, CV = 0.8711, kiểm tra = 0.9200
+Lưới mịn: {'C': 30, 'gamma': 1}, CV = 0.8756, kiểm tra = 0.9200
+Chênh lệch CV mịn - thưa: +0.0044; kiểm tra: +0.0000.
+CV lưới mịn cao hơn mốc 0.8711 của tài liệu: True
+Accuracy kiểm tra có thay đổi: False
+Dò mịn có thể cải thiện điểm CV nhưng không bảo đảm cải thiện tập kiểm tra; cần cân nhắc lợi ích so với số lần huấn luyện tăng thêm.
+Tập kiểm tra chỉ dùng để báo cáo sau khi chọn bằng CV; không dùng nó để tiếp tục chỉnh lưới.
+Bảng điểm CV lưới mịn:
+gamma     0.3     1.0     3.0
+C
+3      0.8533  0.8711  0.8667
+10     0.8489  0.8711  0.8667
+30     0.8622  0.8756  0.8533
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài tập 5 — Những chữ số bị nhầm ---
+Bảng nhầm lẫn: hàng là nhãn thật, cột là nhãn dự đoán.
+    0   1   2   3   4   5   6   7   8   9
+0  45   0   0   0   0   0   0   0   0   0
+1   0  46   0   0   0   0   0   0   0   0
+2   0   0  44   0   0   0   0   0   0   0
+3   0   0   0  46   0   0   0   0   0   0
+4   0   0   0   0  44   0   0   0   1   0
+5   0   0   0   0   0  46   0   0   0   0
+6   0   0   0   0   0   0  45   0   0   0
+7   0   0   0   0   0   0   0  44   0   1
+8   0   1   0   0   0   0   0   0  42   0
+9   0   0   0   1   0   0   0   0   0  44
+Các cặp bị nhầm (thật -> dự đoán):
+4 -> 8: 1 ảnh
+7 -> 9: 1 ảnh
+8 -> 1: 1 ảnh
+9 -> 3: 1 ảnh
+[Biểu đồ hiển thị trong notebook]
+Có 4 ảnh sai trên 450 ảnh kiểm tra.
+[Biểu đồ hiển thị trong notebook]
+Đã lưu figures/chu_so_sai_006_that_9_doan_3.png
+[Biểu đồ hiển thị trong notebook]
+Đã lưu figures/chu_so_sai_018_that_8_doan_1.png
+[Biểu đồ hiển thị trong notebook]
+Đã lưu figures/chu_so_sai_161_that_4_doan_8.png
+[Biểu đồ hiển thị trong notebook]
+Đã lưu figures/chu_so_sai_428_that_7_doan_9.png
+Ảnh chỉ có 8×8 ô nên nét mảnh, nét nối và vòng kín dễ bị mất hoặc dính vào nhau. Các chữ có nét giống nhau như 9 và 3, 8 và 1, 4 và 8, 7 và 9 vì vậy có thể bị nhầm.
+Đây là nhận xét trực quan từ các ảnh sai; không thể kết luận nguyên nhân nội tại của mô hình chỉ từ một ảnh.
+
+--- Bài tập 6 — SVM trên dữ liệu lớn ---
+n =  2000, SVC      : 0.058691 giây
+n =  2000, LinearSVC: 0.004043 giây
+n =  5000, SVC      : 0.297995 giây
+n =  5000, LinearSVC: 0.007649 giây
+n = 10000, SVC      : 3.450718 giây
+n = 10000, LinearSVC: 0.018400 giây
+n = 20000, SVC      : 10.605985 giây
+n = 20000, LinearSVC: 0.039341 giây
+Bảng thời gian fit (giây):
+              SVC  LinearSVC
+so_mau
+2000     0.058691   0.004043
+5000     0.297995   0.007649
+10000    3.450718   0.018400
+20000   10.605985   0.039341
+Tỷ lệ tăng so với cỡ dữ liệu trước:
+2000 -> 5000 (2.5 lần số mẫu): SVC 5.08 lần; LinearSVC 1.89 lần thời gian.
+5000 -> 10000 (2.0 lần số mẫu): SVC 11.58 lần; LinearSVC 2.41 lần thời gian.
+10000 -> 20000 (2.0 lần số mẫu): SVC 3.07 lần; LinearSVC 2.14 lần thời gian.
+Hai lần tăng gấp đôi là 5.000→10.000 và 10.000→20.000 mẫu; 2.000→5.000 là tăng 2,5 lần.
+SVC dùng kernel RBF phải xử lý tương tác giữa nhiều cặp mẫu nên thường tốn thời gian hơn khi dữ liệu lớn. LinearSVC dùng bộ giải tuyến tính nên thích hợp hơn với nhiều mẫu khi ranh giới tuyến tính phù hợp.
+Các tỷ lệ trên là số đo một lần trên máy hiện tại, không phải quy luật tăng cố định: dữ liệu sinh ở mỗi cỡ khác nhau và thời gian còn phụ thuộc bộ giải, phần cứng, tải máy.
+[Biểu đồ hiển thị trong notebook]

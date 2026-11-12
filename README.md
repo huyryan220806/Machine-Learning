@@ -19,6 +19,7 @@ Repository lưu mã nguồn, dữ liệu và kết quả các bài thực hành 
 | 03 | Naive Bayes: định lý Bayes, túi từ, lọc thư rác, làm trơn Laplace, GaussianNB và 6 bài tập mục 7. | [Bài 03 — Naive Bayes](03.%20Naive_Bayes/README.md) |
 | 04 | KNN: khoảng cách, chuẩn hóa, chọn k bằng kiểm định chéo, so sánh mô hình, hồi quy và 6 bài tập mục 7. | [Bài 04 — KNN](04.%20KNN/README.md) |
 | 05 | Decision Tree và Random Forest: Gini, chọn độ sâu, độ quan trọng của biến, hồi quy và 6 bài tập mục 9. | [Bài 05 — Cây quyết định và Rừng ngẫu nhiên](05.%20DecisionTree_RandomForest/README.md) |
+| 06 | SVM: lề rộng nhất, chuẩn hóa, kernel, dò C/gamma, chữ số viết tay và 6 bài tập mục 7. | [Bài 06 — SVM](06.%20SVM/README.md) |
 
 ## Cấu trúc repository
 
@@ -67,6 +68,15 @@ Machine-Learning/
 │   ├── outputs/              # Kết quả TXT của hai notebook
 │   ├── scripts/
 │   │   └── run_all.py        # Chạy toàn bộ Lab 5
+│   ├── requirements.txt
+│   └── README.md
+├── 06. SVM/
+│   ├── code/                 # 2 notebook: thực hành (5 cell) và bài tập (6 cell)
+│   ├── data/                 # Sinh viên, sinh viên mở rộng, hai vầng trăng
+│   ├── figures/              # 16 hình PNG, gồm từng ảnh chữ số đoán sai
+│   ├── outputs/              # Kết quả TXT của hai notebook
+│   ├── scripts/
+│   │   └── run_all.py        # Chạy toàn bộ Lab 6
 │   ├── requirements.txt
 │   └── README.md
 ├── .gitignore
@@ -177,3 +187,20 @@ Notebook thực hành có 7 cell code, notebook bài tập mục 9 có 6 cell co
 - [Dữ liệu khách vay](05.%20DecisionTree_RandomForest/data/khach_vay.csv) và [dữ liệu giá nhà](05.%20DecisionTree_RandomForest/data/gia_nha.csv).
 - [Hình minh họa](05.%20DecisionTree_RandomForest/figures/) và [kết quả chạy](05.%20DecisionTree_RandomForest/outputs/).
 - [README Lab 5: từng bài, cách chạy và đối chiếu kết quả](05.%20DecisionTree_RandomForest/README.md).
+
+## Tải và chạy bài 06
+
+Từ thư mục chứa repository, chạy:
+
+```sh
+cd "Machine-Learning/06. SVM"
+python -m pip install -r requirements.txt
+python scripts/run_all.py
+```
+
+Notebook thực hành có 5 cell code, notebook bài tập mục 7 có 6 cell code; mỗi mục/bài có tiêu đề. Script cập nhật notebook, xuất nhật ký vào `outputs/` và lưu 16 hình vào `figures/`. Bài tập cuối đo thời gian SVC/LinearSVC tới 20.000 mẫu, nên kết quả thời gian sẽ khác giữa các máy. Thư mục đề `Lab6_SVM/` chỉ lưu trên máy.
+
+- [Notebook thực hành](06.%20SVM/code/Lab6_NguyenDinhHuy.ipynb) và [notebook bài tập mục 7](06.%20SVM/code/BaiTap6.ipynb).
+- [Ba bộ dữ liệu CSV](06.%20SVM/data/); bộ chữ số được nạp bằng `load_digits()` có sẵn trong scikit-learn.
+- [Hình minh họa và ảnh chữ số sai](06.%20SVM/figures/), [kết quả chạy](06.%20SVM/outputs/).
+- [README Lab 6: từng bài, cách chạy và đối chiếu kết quả](06.%20SVM/README.md).
