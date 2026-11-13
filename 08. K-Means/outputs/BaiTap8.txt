@@ -1,0 +1,115 @@
+--- Bài 1 — Tự tính silhouette bằng NumPy ---
+Silhouette tự tính: 0.7227055108; thư viện: 0.7227055108
+Khách có s nhỏ nhất: chỉ số 113 (khách thứ 114, dòng CSV 115).
+tuoi             38.0
+thu_nhap         25.4
+diem_chi_tieu    41.0
+Cụm 2: a=0.917758, b=0.944750, s=0.028571
+Điểm này ít tách biệt hơn các khách còn lại: khoảng cách trong cụm a khá gần khoảng cách sang cụm khác b.
+Trên hình thu nhập–chi tiêu, dấu sao đánh dấu khách ở rìa cụm, hướng về nhóm lân cận; s nhỏ không tự động có nghĩa là gán sai.
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài 2 — Thêm cột tuổi ---
+K
+2     0.3730
+3     0.4220
+4     0.4558
+5     0.4808
+6     0.4760
+7     0.4627
+8     0.4596
+9     0.4622
+10    0.4573
+
+K tốt nhất = 5; vẫn là 5.
+Tâm 3 biến, sắp theo thu nhập:
+    tuoi  thu_nhap  diem_chi_tieu  so_khach
+0  44.88      8.04          18.85        40
+1  25.13      8.48          77.56        39
+4  41.65     17.58          49.18        57
+2  42.86     30.13          19.97        35
+3  32.08     30.28          82.00        39
+
+Mô hình 2 biến, thêm tuổi trung bình để đối chiếu:
+      tuoi  thu_nhap  diem_chi_tieu  so_khach
+cum
+0    24.94      7.48          80.20        35
+3    44.88      8.04          18.85        40
+2    40.45     17.39          49.30        60
+1    42.86     30.13          19.97        35
+4    32.62     30.21          81.53        40
+
+Bảng chéo hai cách phân cụm:
+Cụm 3 biến   0   1   2   3   4
+Cụm 2 biến
+0            0  35   0   0   0
+1            0   0  35   0   0
+2            0   4   0   0  56
+3           40   0   0   0   0
+4            0   0   0  39   1
+ARI giữa hai cách chia = 0.9357.
+Thêm tuổi làm khoảng cách xét cả khác biệt tuổi sau chuẩn hóa. Thành viên cụm thay đổi, kéo theo tâm thu nhập và chi tiêu thay đổi; đọc các tâm theo đặc trưng thay vì số cụm.
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài 3 — K-Means++ và khởi tạo ngẫu nhiên ---
+random: 30/50 lần đạt inertia làm tròn 23.0; min=23.0167, max=204.0456
+k-means++: 50/50 lần đạt inertia làm tròn 23.0; min=23.0167, max=23.0167
+Trong 50 seed này, cách đạt nghiệm tốt nhiều nhất là k-means++.
+K-Means++ ưu tiên các tâm cách xa nhau, giảm nguy cơ nhiều tâm cùng nằm trong một nhóm. Nó vẫn không bảo đảm cực tiểu toàn cục; n_init > 1 tăng cơ hội chọn nghiệm tốt.
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài 4 — Lưu ảnh nén và dùng ảnh cá nhân ---
+anh_goc.png: 427 x 640; 550,154 byte
+anh_16_mau.png: 134,431 byte; tỷ lệ gốc/nén = 4.09
+Sai lệch trung bình = 7.97 mức sáng
+
+anh_ca_nhan_goc.png: 974 x 732; 545,830 byte
+anh_ca_nhan_16_mau.png: 87,072 byte; tỷ lệ gốc/nén = 6.27
+Sai lệch trung bình = 3.37 mức sáng
+
+So sánh cùng định dạng PNG bằng số byte thực tế, không so JPEG đầu vào với PNG đầu ra.
+Tỷ lệ 6 lần trong đề là 24/4 bit cho chỉ số màu, chưa tính bảng màu; imsave lưu PNG RGB/RGBA nên dung lượng còn phụ thuộc mã hóa PNG và cấu trúc ảnh.
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài 5 — DBSCAN trên hai vầng trăng ---
+K-Means: ARI = 0.2475
+eps=0.2: 1 cụm, 40 điểm nhiễu; ARI=-0.0014; không tốt hơn K-Means theo ARI.
+eps=0.3: 1 cụm, 10 điểm nhiễu; ARI=0.0012; không tốt hơn K-Means theo ARI.
+eps=0.4: 1 cụm, 3 điểm nhiễu; ARI=-0.0001; không tốt hơn K-Means theo ARI.
+eps là bán kính lân cận: quá nhỏ làm đứt cụm và tăng nhiễu; quá lớn có thể nối hai vành trăng thành một cụm.
+ARI so sánh với nhãn thật, không phụ thuộc hoán đổi số cụm; nhãn thật chỉ dùng để đánh giá sau phân cụm.
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài 6 — Phân cụm chữ số viết tay ---
+Cụm            0    1    2   3    4    5    6    7    8    9
+Chữ số thật
+0            176    0    0   0    0    0    2    0    0    0
+1              0  100    0  54    1    2    0    1    0   24
+2              1    8    3   2   13    0    0    0    2  148
+3              0    7    7   0  154    0    0    2   13    0
+4              0    2   11   3    0    0  165    0    0    0
+5              0    0    0   0    2    1    2  136   41    0
+6              1    3    0   0    0  177    0    0    0    0
+7              0    2  174   2    0    0    0    1    0    0
+8              0  100    5   6    2    2    0    4   52    3
+9              0    1    8  20    6    0    0    6  139    0
+
+Tỷ lệ mỗi chữ số nằm trong cụm đông nhất của nó:
+Chữ số thật
+0    0.9888
+1    0.5495
+2    0.8362
+3    0.8415
+4    0.9116
+5    0.7473
+6    0.9779
+7    0.9721
+8    0.5747
+9    0.7722
+Chữ số 0 được gom gọn nhất: 98.88% nằm trong cụm 0.
+Cụm 1 trộn nhiều chữ số: 1 (100 ảnh), 8 (100 ảnh), tổng 223.
+Cụm 3 trộn nhiều chữ số: 1 (54 ảnh), 9 (20 ảnh), tổng 87.
+Cụm 8 trộn nhiều chữ số: 9 (139 ảnh), 8 (52 ảnh), tổng 247.
+Cụm 9 trộn nhiều chữ số: 2 (148 ảnh), 1 (24 ảnh), tổng 175.
+K-Means nhóm theo khoảng cách pixel, nên các nét tương tự có thể bị gom chung; một chữ số có nhiều kiểu viết cũng có thể bị tách thành nhiều cụm.
+[Biểu đồ hiển thị trong notebook]
