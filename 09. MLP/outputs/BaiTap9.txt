@@ -1,0 +1,66 @@
+--- Bài 1 — Tự dự đoán bằng trọng số đã học ---
+                 x1              x2        tu_tinh       thu_vien       sai_lech
+338  0.331900000000 -0.559500000000 0.017557985373 0.017557985373 0.000000000000
+342 -0.701600000000 -0.825100000000 0.999434831959 0.999434831959 0.000000000000
+40   0.515500000000 -0.005200000000 0.794331056599 0.794331056599 0.000000000000
+231 -0.603600000000  0.272600000000 0.134400889648 0.134400889648 0.000000000000
+242  0.274800000000  0.351500000000 0.957805718116 0.957805718116 0.000000000000
+Sai lệch lớn nhất: 1.110e-16
+Hai cách khớp: mỗi lớp nhân với ma trận trọng số rồi cộng hệ số chặn; ReLU ở lớp ẩn tạo tính phi tuyến, sigmoid lớp ra đổi logit thành xác suất lớp 1.
+
+--- Bài 2 — Một mạng XOR khác ---
+ x1  x2  h1  h2   y  XOR
+0.0 0.0 0.0 0.0 0.0    0
+0.0 1.0 0.0 1.0 1.0    1
+1.0 0.0 1.0 0.0 1.0    1
+1.0 1.0 0.0 0.0 0.0    0
+Khi hai đầu vào bằng nhau, hai hiệu đều bằng 0 nên đầu ra bằng 0. Khi khác nhau, một hiệu bằng 1 còn hiệu kia bằng -1; ReLU giữ 1 và loại -1 nên tổng bằng 1.
+Mạng tính |x1-x2|; trên đầu vào nhị phân, giá trị đó chính là XOR. Với số thực bất kỳ, đầu ra không còn là phép XOR nhị phân.
+
+--- Bài 3 — So sánh các hàm kích hoạt ---
+            tap_hoc  tap_kiem_tra
+activation
+logistic     0.8400        0.8533
+tanh         0.8711        0.9067
+relu         0.8844        0.9067
+Hàm cho accuracy kiểm tra cao nhất trong phép thử này: tanh, relu (0.9067).
+Kết luận chỉ cho bộ dữ liệu và seed này; khi chọn hàm để triển khai cần kiểm định chéo trên tập học, không dùng tập kiểm tra để dò tiếp.
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài 4 — Tốc độ học ---
+ toc_do_hoc  so_vong  loss_cuoi  accuracy
+   0.000100      582   0.018928  0.988889
+   0.001000      144   0.005210  0.984444
+   0.010000       38   0.001077  0.977778
+   0.100000       30   0.099601  0.948889
+Tốc độ quá nhỏ làm mất mát giảm chậm và cần nhiều vòng; tốc độ quá lớn có thể vượt vùng tốt, làm loss dao động và ảnh hưởng khả năng tổng quát hóa.
+Adam điều chỉnh bước học theo từng tham số, nên không có quy tắc mọi tốc độ lớn đều phân kỳ; cần đọc đường loss và accuracy thực tế cùng nhau.
+[Biểu đồ hiển thị trong notebook]
+
+--- Bài 5 — Dò lưới cho mạng nơ-ron ---
+  lop_an  alpha  accuracy_cv   std_cv  hang
+   (50,) 1.0000     0.978469 0.005461     1
+(50, 50) 1.0000     0.977725 0.004075     2
+  (100,) 1.0000     0.977723 0.005273     3
+  (100,) 0.0001     0.975498 0.008007     4
+  (100,) 0.0100     0.975498 0.008007     4
+   (50,) 0.0100     0.975498 0.003805     4
+   (50,) 0.0001     0.974013 0.004707     7
+(50, 50) 0.0100     0.968063 0.010684     8
+(50, 50) 0.0001     0.968063 0.010684     8
+   (10,) 1.0000     0.965108 0.008640    10
+   (10,) 0.0100     0.948757 0.015861    11
+   (10,) 0.0001     0.948016 0.016129    12
+
+Cặp tốt nhất: {'mlpclassifier__alpha': 1.0, 'mlpclassifier__hidden_layer_sizes': (50,)}
+Accuracy CV tốt nhất: 0.9785
+Tập kiểm tra: MLP = 0.9822; SVM RBF = 0.9911.
+MLP chưa vượt SVM trên lần chia này. Cặp tham số được chọn bằng CV trên tập học, rồi mới chấm tập kiểm tra.
+
+--- Bài 6 — Mạng nơ-ron cho hồi quy ---
+MLP: MAE kiểm tra = 0.500795 tỷ đồng; giá 250 m² = 28.175828 tỷ đồng.
+Hồi quy tuyến tính: MAE kiểm tra = 0.257784 tỷ đồng; giá 250 m² = 19.913943 tỷ đồng.
+Dữ liệu quan sát chỉ từ 35.5 tới 117.5 m².
+Căn 250 m² nằm ngoài dữ liệu; chưa có giá thật để khẳng định mô hình nào ngoại suy chính xác hơn. MLP ReLU là tuyến tính từng đoạn, độ dốc ngoài miền học phụ thuộc trọng số đã học; MAE tốt trong miền không bảo đảm ngoại suy tốt.
+Đường thẳng kéo dài xu hướng tuyến tính đã giả định, còn mạng có thể kéo dài theo độ dốc khác; cả hai dự đoán đều cần thận trọng khi dùng ngoài miền dữ liệu.
+[Biểu đồ hiển thị trong notebook]

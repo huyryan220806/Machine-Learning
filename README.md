@@ -22,6 +22,7 @@ Repository lưu mã nguồn, dữ liệu và kết quả các bài thực hành 
 | 06 | SVM: lề rộng nhất, chuẩn hóa, kernel, dò C/gamma, chữ số viết tay và 6 bài tập mục 7. | [Bài 06 — SVM](06.%20SVM/README.md) |
 | 07 | Đánh giá mô hình: accuracy, precision/recall/F1, ROC/AUC, chọn ngưỡng, cân bằng lớp và 6 bài tập mục 8. | [Bài 07 — Đánh giá mô hình](07.%20Accuracy_Metrics/README.md) |
 | 08 | Phân cụm K-Means: 5 mục thực hành và 6 bài tập mục 7. | [Bài 08 — Phân cụm K-Means](08.%20K-Means/README.md) |
+| 09 | Mạng nơ-ron nhiều lớp (MLP): 5 mục thực hành và 6 bài tập mục 7. | [Bài 09 — Mạng nơ-ron nhiều lớp (MLP)](09.%20MLP/README.md) |
 
 ## Cấu trúc repository
 
@@ -94,6 +95,15 @@ Machine-Learning/
 │   ├── code/                 # Thực hành (5 cell) và bài tập (6 cell)
 │   ├── data/                 # Dữ liệu của Lab 8
 │   ├── figures/              # 16 ảnh và biểu đồ
+│   ├── outputs/              # Kết quả TXT của hai notebook
+│   ├── scripts/
+│   │   └── run_all.py
+│   ├── requirements.txt
+│   └── README.md
+├── 09. MLP/
+│   ├── code/                 # Thực hành (5 cell) và bài tập (6 cell)
+│   ├── data/                 # Dữ liệu của Lab 9
+│   ├── figures/              # 10 ảnh và biểu đồ
 │   ├── outputs/              # Kết quả TXT của hai notebook
 │   ├── scripts/
 │   │   └── run_all.py
@@ -257,3 +267,19 @@ Hai notebook gồm 5 cell thực hành và 6 cell bài tập mục 7, mỗi mụ
 - [Notebook thực hành](08.%20K-Means/code/Lab8_NguyenDinhHuy.ipynb) và [notebook bài tập](08.%20K-Means/code/BaiTap8.ipynb).
 - [Dữ liệu](08.%20K-Means/data/), [hình ảnh](08.%20K-Means/figures/) và [kết quả chạy](08.%20K-Means/outputs/).
 - [README Lab 8: nội dung, cách chạy và đối chiếu kết quả](08.%20K-Means/README.md).
+
+## Tải và chạy bài 09
+
+Từ thư mục chứa repository, chạy:
+
+```sh
+cd "Machine-Learning/09. MLP"
+python -m pip install -r requirements.txt
+python scripts/run_all.py
+```
+
+Hai notebook gồm 5 cell thực hành và 6 cell bài tập mục 7, mỗi mục/bài có tiêu đề. Script lưu kết quả vào notebook, nhật ký vào `outputs/` và 10 ảnh/biểu đồ vào `figures/`. Thư mục đề `Lab9_MLP/` chỉ lưu trên máy.
+
+- [Notebook thực hành](09.%20MLP/code/Lab9_NguyenDinhHuy.ipynb) và [notebook bài tập](09.%20MLP/code/BaiTap9.ipynb).
+- [Dữ liệu](09.%20MLP/data/), [hình ảnh](09.%20MLP/figures/) và [kết quả chạy](09.%20MLP/outputs/).
+- [README Lab 9: nội dung, cách chạy và đối chiếu kết quả](09.%20MLP/README.md).
